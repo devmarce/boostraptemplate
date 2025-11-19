@@ -1,0 +1,96 @@
+/*
+Theme Name: Bootstrap Template
+Theme URI: https://Marcelo.com
+Author: Marcelo MAM
+Author URI: https://github.com/devmarce/boostraptemplate
+Description: Bootstrap v.4 basic theme for developers to build their new theme very fast and easy. (WordPress 5 or Gutenberg ready.) The concept is to keep it basic, no rich features, no additional functions; all of these for theme developers will be easier to start develop their theme. Please read notice on Bootstrap Basic 4 Help page in Dashboard &gt; Appearance &gt; Bootstrap Basic4 Help.
+Version: 1.0.0
+Requires PHP: 5.5
+Requires at least: 5.0
+Tested up to: 6.9
+License: MIT
+License URI: https://www.gnu.org/licenses/
+Text Domain: bootstrap-basic4
+Domain Path: /languages/
+Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-background, custom-menu, featured-images, post-formats, threaded-comments, translation-ready, editor-style, blog
+
+This theme built with Twitter Bootstrap v.4. It is basic theme with basic style for build new theme with Bootstrap.
+
+*/
+
+
+/*
+Required WordPress CSS
+*/
+
+/* ==============================
+   Variables principales del theme
+   ============================== */
+:root {
+  /* Colores */
+  --color-primary: #002458 !important;
+  /* azul corporativo */
+  --color-secondary: #f1c40f;
+  /* amarillo destacado */
+  --color-accent: #e74c3c;
+  /* rojo para alertas */
+  --color-whith: #ffffff;
+  --color-black: #000;
+  --color-text: #000;
+
+  /* Tipografía */
+  --font-base: 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-size-base: 1rem;
+  --font-size-sm: 14px;
+  --font-size-lg: 20px;
+
+  /* Espaciados */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+
+  /* Bordes radius */
+  --border-radius-sm: 0.2rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+
+  /* Z-index */
+  --z-navbar: 1000;
+  --z-modal: 1050;
+  --z-tooltip: 1100;
+}
+
+
+body {
+  font-family: var(--font-base);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+.h1 {
+  font-size: 2.1rem !important;
+}
+
+.h2 {
+  font-size: 1.7rem !important;
+}
+
+.h3 {
+  font-size: 1.5rem !important;
+}
+
+.h4 {
+  font-size: 1.2rem !important;
+}
+
+.h5 {
+  font-size: 1.1rem !important;
+}
+
+.h6 {
+  font-size: 1rem !important;
+}

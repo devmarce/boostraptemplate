@@ -85,6 +85,7 @@ if (function_exists('acf_add_local_field_group')):
     ));
 endif;
 
+/*
 if (function_exists('acf_add_local_field_group')):
     // Cards Services
     acf_add_local_field_group(array(
@@ -140,7 +141,9 @@ if (function_exists('acf_add_local_field_group')):
         'description' => 'Grupo de campos para las Cards Services',
     ));
 endif;
+*/
 
+/*
 if (function_exists('acf_add_local_field_group')):
     // Banner Repuestos
     acf_add_local_field_group(array(
@@ -199,7 +202,9 @@ if (function_exists('acf_add_local_field_group')):
     ));
 
 endif;
+*/
 
+/*
 if (function_exists('acf_add_local_field_group')):
     // Banner Usados y Servicios
     acf_add_local_field_group(array(
@@ -282,3 +287,4 @@ if (function_exists('acf_add_local_field_group')):
     ));
 
 endif;
+*/

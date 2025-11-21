@@ -24,19 +24,19 @@ if (function_exists('acf_add_local_field_group')):
                 'key' => 'field_whatsapp_message',
                 'label' => 'Mensaje',
                 'name' => 'whatsapp_message_header',
-                'type' => 'text',
-                'instructions' => 'Texto que se enviará por WhatsApp (Opcional)',
+                'type' => 'textarea',
+                'instructions' => 'Texto se puede armar en <a href="https://crear.wa.link/" target="_blank">Aquí 👈</a>',
                 'required' => 0,
                 'wrapper' => array(
                     'width' => '33',
                 ),
             ),
             array(
-                'key' => 'field_sucursal_link',
-                'label' => 'Link de la Sucursales',
-                'name' => 'sucursal_link',
+                'key' => 'field_linkespecial',
+                'label' => 'Link Especial 🔥',
+                'name' => 'link_especial',
                 'type' => 'link',
-                'instructions' => 'Seleccione o ingrese el link de la sucursal',
+                'instructions' => 'Seleccione o ingrese el link Especial',
                 'required' => 0,
                 'wrapper' => array(
                     'width' => '34', // un puntito más para completar el 100%

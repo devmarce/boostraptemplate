@@ -8,12 +8,34 @@
 ?>
 </div><!--.site-content-->
 
+<!-- test @borrar -->
+<style type="text/css">
+    /* Tamaño por defecto (mobile) */
+    .logo-footer {
+        max-width: 120px;
+        /* ajusta según lo que necesites */
+    }
+
+    /* A partir de pantallas medianas (≥768px) */
+    @media (min-width: 768px) {
+        .logo-footer {
+            max-width: 6rem;
+        }
+    }
+
+    /* A partir de pantallas grandes (≥1200px) */
+    @media (min-width: 1200px) {
+        .logo-footer {
+            max-width: 10rem;
+        }
+    }
+</style>
 <footer id="site-footer" class="text-white pt-5 pb-0" style="background: var(--color-primary); width: 100%;">
     <div class="container">
         <div class="row">
             <!-- Logos -->
             <div class="col-md-4 mb-4 mt-1">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-blanco.png" alt="Taraborelli Agro" class="mb-2 w-100">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/marca/logo.png" alt="Dulcin Pasteleria" class="mb-2 logo-footer">
             </div>
 
             <?php
@@ -128,7 +150,7 @@
 
     <!-- barra black legales -->
     <div class="bg-black text-center">
-        <p class="mt-3 mb-0 p-2">&copy; <?php echo date('Y'); ?> Taraborelli Agro | New Holland. Todos los derechos reservados.</p>
+        <p class="mt-3 mb-0 p-2">&copy; <?php echo date('Y'); ?> Dulcing Delicias Pastelería. Todos los derechos reservados.</p>
     </div>
 </footer>
 </div><!--.page-container-->

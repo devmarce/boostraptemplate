@@ -4,7 +4,7 @@ Theme URI: https://Marcelo.com
 Author: Marcelo MAM
 Author URI: https://github.com/devmarce/boostraptemplate
 Description: Bootstrap v.4 basic theme for developers to build their new theme very fast and easy. (WordPress 5 or Gutenberg ready.) The concept is to keep it basic, no rich features, no additional functions; all of these for theme developers will be easier to start develop their theme. Please read notice on Bootstrap Basic 4 Help page in Dashboard &gt; Appearance &gt; Bootstrap Basic4 Help.
-Version: 1.0.0
+Version: 1.2.0
 Requires PHP: 5.5
 Requires at least: 5.0
 Tested up to: 6.9
@@ -28,15 +28,14 @@ Required WordPress CSS
    ============================== */
 :root {
   /* Colores */
-  --color-primary: #002458 !important;
+  --color-primary: #e6348f  !important;
   /* azul corporativo */
-  --color-secondary: #f1c40f;
+  --color-secondary: rgb(65 0 149) !important;
   /* amarillo destacado */
   --color-accent: #e74c3c;
   /* rojo para alertas */
-  --color-whith: #ffffff;
+  --color-whithe: #ffffff;
   --color-black: #000;
-  --color-text: #000;
 
   /* Tipografía */
   --font-base: 'Helvetica Neue', Arial, sans-serif;
@@ -67,7 +66,7 @@ Required WordPress CSS
 body {
   font-family: var(--font-base);
   font-size: var(--font-size-base);
-  color: var(--color-text);
+  color: var(--color-whithe);
   background-color: var(--color-background);
 }
 
@@ -94,3 +93,136 @@ body {
 .h6 {
   font-size: 1rem !important;
 }
+
+/* ================BACKGROUND COLORS===================== */
+.bg-header {
+  background-color: var(--color-primary);
+}
+
+/* ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ HOMEPAGE SLIDER ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ */
+
+
+/* ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ HOMEPAGE SLIDER ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ */
+.slider-home #mainSlider .carousel-caption,
+.slider-home #mainSliderMobile .carousel-caption {
+  right: 10%;
+  left: auto;
+  bottom: 35%;
+  text-align: left;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  max-width: 20rem;
+}
+
+.slider-home #mainSlider .carousel-item img,
+.slider-home #mainSliderMobile .carousel-item img {
+  width: 100% !important;
+  max-height: 600px;
+  object-fit: cover;
+}
+
+.slider-home #mainSlider .carousel-indicators,
+.slider-home #mainSliderMobile .carousel-indicators,
+.slider-home #mainSlider .carousel-caption h3,
+.slider-home #mainSliderMobile .carousel-caption h3 {
+  margin-bottom: 1.5rem !important;
+}
+
+.slider-home #mainSlider .carousel-caption a,
+.slider-home #mainSliderMobile .carousel-caption a {
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.slider-home #mainSlider .carousel-indicators li,
+.slider-home #mainSliderMobile .carousel-indicators li {
+  width: 10px;
+  height: 10px;
+  border: 3px solid #D9D9D9;
+  opacity: 1 !important;
+  border-radius: 50%;
+  background-color: transparent;
+  margin: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.slider-home #mainSlider .carousel-indicators .active,
+.slider-home #mainSliderMobile .carousel-indicators .active {
+  background-color: #D9D9D9;
+  border-color: #D9D9D9;
+}
+
+/* Asegurar que las flechas estén visibles y clickeables */
+.slider-home #mainSliderMobile .carousel-control-prev,
+.slider-home #mainSliderMobile .carousel-control-next {
+  z-index: 10;
+  /* por encima de caption e imagen */
+  width: 10%;
+  /* área clickeable más grande */
+}
+
+.slider-home #mainSliderMobile .carousel-control-prev-icon,
+.slider-home #mainSliderMobile .carousel-control-next-icon {
+  background-size: 100% 100%;
+  outline: none;
+}
+
+@media (max-width: 767.98px) {
+  .slider-home #mainSliderMobile .carousel-caption {
+    right: 5%;
+    left: 5%;
+    top: 10%;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    max-width: 100%;
+  }
+
+  .slider-home #mainSliderMobile .carousel-caption h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .slider-home #mainSliderMobile .carousel-caption p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .slider-home #mainSliderMobile .carousel-caption a {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .slider-home #mainSliderMobile .carousel-item img {
+    max-height: 600px;
+    object-fit: cover;
+    width: auto;
+  }
+
+  .slider-home #mainSliderMobile .carousel-indicators {
+    bottom: 10px;
+    margin-bottom: 1rem !important;
+  }
+
+  .slider-home #mainSliderMobile .carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border: 3px solid #D9D9D9;
+    opacity: 1 !important;
+    border-radius: 50%;
+    background-color: transparent;
+    margin: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .slider-home #mainSliderMobile .carousel-indicators .active {
+    background-color: #D9D9D9;
+    border-color: #D9D9D9;
+  }
+}
+
+/* END: Slider homepage */

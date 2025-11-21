@@ -34,16 +34,51 @@ if (!is_scalar($container_class) || empty($container_class)) {
     }
     ?>
 
-    <header class="page-header page-header-sitebrand-topbar">
+    <!-- test @borrar -->
+    <style type="text/css">
+        .page-header {
+            margin-bottom: 0px !important;
+        }
+
+        /* Tamaño por defecto (mobile) */
+        .logo-header {
+            max-width: 120px;
+            /* ajusta según lo que necesites */
+        }
+
+        /* A partir de pantallas medianas (≥768px) */
+        @media (min-width: 768px) {
+            .logo-header {
+                max-width: 220px;
+            }
+        }
+
+        /* A partir de pantallas grandes (≥1200px) */
+        @media (min-width: 1200px) {
+            .logo-header {
+                max-width: 280px;
+            }
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgb(251 251 251) !important;
+        }
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: rgb(65 0 149) !important;
+        }
+    </style>
+    <header class="page-header page-header-sitebrand-topbar bg-header">
         <?php if (has_nav_menu('primary') || is_active_sidebar('navbar-right')) { ?>
             <nav class="navbar navbar-expand-lg navbar-dark" style="padding: 1.5rem 1rem;">
                 <div class="container-fluid d-flex align-items-center justify-content-between">
 
-                    <!-- Logo -->
-                    <?php $logo = get_template_directory_uri() . '/assets/img/logo-blanco.png'; ?>
-                    <a class="navbar-brand d-flex align-items-center" href="<?php echo esc_url(home_url('/')); ?>" style="width: 75% !important">
-                        <img src="<?php echo esc_url($logo); ?>" alt="Taraborelli Agro" class="img-fluid">
+
+                    <?php $logo = get_template_directory_uri() . '/assets/img/marca/logo.png'; ?>
+
+                    <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>">
+                        <img src="<?php echo esc_url($logo); ?>" alt="Dulcing"
+                            class="img-fluid logo-header">
                     </a>
+
 
                     <!-- Botón responsive ▤ -->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar"
@@ -65,25 +100,21 @@ if (!is_scalar($container_class) || empty($container_class)) {
                     </div>
 
                     <!-- Buscador + íconos -->
-                    <div class="d-none d-lg-flex align-items-center">
-                        <form class="form-inline search-bar">
-                            <input class="form-control search-input" type="search" placeholder="Buscar" aria-label="Buscar">
-                        </form>
-
+                    <div class="d-lg-flex align-items-center d-none d-sm-flex">
                         <ul class="navbar-nav ml-lg-3">
                             <?php
                             // Obtener el link de sucursal de Configuración del sitio - header
-                            $sucursal_link_header = get_field('sucursal_link', 'option');
+                            $link_especial = get_field('link_especial', 'option');
 
-                            if (!empty($sucursal_link_header) && !empty($sucursal_link_header['url'])) : ?>
+                            if (!empty($link_especial) && !empty($link_especial['url'])) : ?>
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                        href="<?php echo esc_url($sucursal_link_header['url']); ?>"
-                                        <?php if (!empty($sucursal_link_header['target'])) : ?>
-                                        target="<?php echo esc_attr($sucursal_link_header['target']); ?>"
+                                        href="<?php echo esc_url($link_especial['url']); ?>"
+                                        <?php if (!empty($link_especial['target'])) : ?>
+                                        target="<?php echo esc_attr($link_especial['target']); ?>"
                                         <?php endif; ?>>
-                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon-location.png'); ?>" alt="Sucursales">
-                                        <?php echo esc_html($sucursal_link_header['title'] ?: 'Sucursales'); ?>
+                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icons/icon-tag.png'); ?>" alt="ir a" style="width: 20%;">
+                                        <?php echo esc_html($link_especial['title'] ?: 'Sucursales'); ?>
                                     </a>
                                 </li>
                             <?php endif; ?>
@@ -95,12 +126,15 @@ if (!is_scalar($container_class) || empty($container_class)) {
 
                             if (!empty($wa_number_header)) : ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="https://wa.me/<?php echo esc_attr($wa_number_header); ?>?text=<?php echo urlencode($wa_message_header); ?>" target="_blank" rel="noopener noreferrer">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-whatsapp.png" alt="WhatsApp">
+                                    <a class="nav-link"
+                                        href="https://wa.me/<?php echo esc_attr($wa_number_header); ?>?text=<?php echo rawurlencode($wa_message_header); ?>"
+                                        rel="noopener noreferrer" target="_blank">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icons/icon-whatsapp.png" alt="WhatsApp">
                                         WhatsApp
                                     </a>
                                 </li>
                             <?php endif; ?>
+
                         </ul>
                     </div>
                 </div>

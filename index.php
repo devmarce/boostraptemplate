@@ -13,34 +13,11 @@
 // begins template. -------------------------------------------------------------------------
 get_header();
 ?>
-<style type="text/css">
-  .bg-img-campo {
-    background: url('<?php echo get_template_directory_uri(); ?>/assets/img/cultivo-creciendo.png') top/cover no-repeat;
-  }
 
-  @media screen and (max-width: 767.9px) {
-    .bg-img-campo {
-      background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/cultivo-creciendo.png');
-    }
-  }
-</style>
 <?php
 
 include(get_template_directory() . "/template-parts/parts-homepage/homepage-slider.php");
 
-echo '<div class="bg-img-campo">';
-
-include(get_template_directory() . "/template-parts/parts-homepage/homepage-machines.php");
-
-include(get_template_directory() . "/template-parts/parts-homepage/homepage-cards-services.php");
-
-echo "</div>";
-
-include(get_template_directory() . "/template-parts/parts-homepage/homepage-last-events.php");
-
-include(get_template_directory() . "/template-parts/parts-homepage/homepage-banner-repuestos.php");
-
-include(get_template_directory() . "/template-parts/parts-homepage/homepage-banner-usados.php");
 
 get_footer();
 

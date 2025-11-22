@@ -22,7 +22,7 @@ if (function_exists('acf_add_local_field_group')):
                         'label' => 'Imagen Horizontal ▱',
                         'name' => 'imagen',
                         'type' => 'image',
-                        'instructions' => 'Tamaño Horizontal (1920x650)',
+                        'instructions' => 'Tamaño Horizontal (1024x350)',
                         'required' => 1,
                         'return_format' => 'array',
                         'preview_size' => 'thumbnail',

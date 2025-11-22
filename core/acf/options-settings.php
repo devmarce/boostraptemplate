@@ -7,7 +7,7 @@ if (function_exists('acf_add_local_field_group')):
     // Campos ACF de Sucursales y WhatsApp del header
     acf_add_local_field_group(array(
         'key' => 'group_5e3c09gfgfyh9f99c9c4',
-        'title' => '📍Enlaces de Sucursales y WhatsApp la Cabecera',
+        'title' => '📍Enlaces especiales del Header',
         'fields' => array(
             array(
                 'key' => 'field_whatsapp_number',

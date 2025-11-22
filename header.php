@@ -56,7 +56,7 @@ if (!is_scalar($container_class) || empty($container_class)) {
         /* A partir de pantallas grandes (≥1200px) */
         @media (min-width: 1200px) {
             .logo-header {
-                max-width: 280px;
+                max-width: 145px;
             }
         }
         .navbar-dark .navbar-nav .nav-link {
@@ -68,7 +68,7 @@ if (!is_scalar($container_class) || empty($container_class)) {
     </style>
     <header class="page-header page-header-sitebrand-topbar bg-header">
         <?php if (has_nav_menu('primary') || is_active_sidebar('navbar-right')) { ?>
-            <nav class="navbar navbar-expand-lg navbar-dark" style="padding: 1.5rem 1rem;">
+            <nav class="navbar navbar-expand-lg navbar-dark">
                 <div class="container-fluid d-flex align-items-center justify-content-between">
 
 

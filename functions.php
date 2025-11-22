@@ -89,43 +89,41 @@ if (function_exists('acf_add_options_page')) {
 }
 
 /**
- * Registrar el Custom Post Type "Machines".
+ * Registrar el Custom Post Type "Productos de Pasteleria".
  *
  * Este CPT está orientado a vehículos y maquinaria agropecuaria.
  */
-function registrar_post_type_machines() {
+function registrar_post_type_productos_pasteleria() {
   $labels = array(
-    'name'                  => 'Machines',
-    'singular_name'         => 'Vehículo',
-    'menu_name'             => 'Machines Agro',
-    'name_admin_bar'        => 'Vehículo',
+    'name'                  => '🍥 Mis Productos',
+    'singular_name'         => 'Delicia',
+    'menu_name'             => 'Delicias',
+    'name_admin_bar'        => 'Delicia',
     'add_new'               => 'Agregar nuevo',
-    'add_new_item'          => 'Agregar nuevo vehículo',
-    'new_item'              => 'Nuevo vehículo',
-    'edit_item'             => 'Editar vehículo',
-    'view_item'             => 'Ver vehículo',
-    'all_items'             => 'Todos los vehículos',
-    'search_items'          => 'Buscar vehículos',
-    'not_found'             => 'No se encontraron vehículos',
-    'not_found_in_trash'    => 'No se encontraron vehículos en la papelera',
-    'parent_item_colon'     => 'Vehículo padre:',
+    'add_new_item'          => 'Nueva Delicia 🧁',
+    'new_item'              => 'Nueva delicia',
+    'edit_item'             => 'Editar delicia',
+    'view_item'             => 'Ver delicia',
+    'all_items'             => 'Todas las delicias',
+    'search_items'          => 'Buscar delicias',
+    'not_found'             => 'No se encontraron delicias',
+    'not_found_in_trash'    => 'No se encontraron delicias en la papelera',
+    'parent_item_colon'     => 'Delicia padre:',
   );
-
+  
   $args = array(
     'labels'                => $labels,
     'public'                => true,
     'has_archive'           => true,
-    'rewrite'               => array('slug' => 'machines'),
+    'rewrite'               => array('slug' => 'productos_pasteleria'),
     'supports'              => array('title'),
-    'menu_icon'             => 'dashicons-car',
-    'show_in_rest'          => true,
+    'menu_icon'             => 'dashicons-heart',
+    'show_in_half'          => true,
   );
 
-  register_post_type('machines', $args);
+  register_post_type('productos_pasteleria', $args);
 }
-add_action('init', 'registrar_post_type_machines');
-
-
+add_action('init', 'registrar_post_type_productos_pasteleria');
 
 /**
  * Construye un array de máquinas agrupadas por categoría.
@@ -183,4 +181,27 @@ function get_machines_grouped_by_category() {
     }
 
     return $data_machine;
+}
+
+/**
+ * Devuelve clases de Bootstrap 4 para controlar la visibilidad de elementos
+ * según el dispositivo (mobile o desktop).
+ *
+ * Parámetro:
+ *  - 'desktop' → Oculta en móviles y muestra en pantallas medianas en adelante.
+ *  - 'mobile'  → Muestra en móviles y oculta en pantallas medianas en adelante.
+ *
+ * Uso:
+ *   echo responsive_device('desktop'); // d-none d-md-block
+ *   echo responsive_device('mobile');  // d-block d-md-none
+ */
+function responsive_device($device) {
+    switch ($device) {
+        case 'desktop':
+            return 'd-none d-md-block';
+        case 'mobile':
+            return 'd-block d-md-none';
+        default:
+            return '';
+    }
 }

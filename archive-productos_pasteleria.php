@@ -200,10 +200,6 @@ $productos_grouped = get_pasteleria_grouped_by_category();
                                   </p>
                                 <?php endif; ?>
 
-                                <?php if (!empty($item['estado'])) : ?>
-                                  <p><small class="text-muted">Estado: <?php echo esc_html($item['estado']); ?></small></p>
-                                <?php endif; ?>
-
                                 <?php if (!empty($item['descripcion_corta'])) : ?>
                                   <p class="card-text"><?php echo esc_html($item['descripcion_corta']); ?></p>
                                 <?php endif; ?>
@@ -275,10 +271,6 @@ $productos_grouped = get_pasteleria_grouped_by_category();
                                   </p>
                                 <?php endif; ?>
 
-                                <?php if (!empty($item['estado'])) : ?>
-                                  <p><small class="text-muted">Estado: <?php echo esc_html($item['estado']); ?></small></p>
-                                <?php endif; ?>
-
                                 <?php if (!empty($item['descripcion_corta'])) : ?>
                                   <p class="card-text"><?php echo esc_html($item['descripcion_corta']); ?></p>
                                 <?php endif; ?>
@@ -303,7 +295,6 @@ $productos_grouped = get_pasteleria_grouped_by_category();
                                   class="btn btn-whatsapp">
                                   por WhatsApp
                                 </a>
-
                               </div>
                             </div>
                           </div>

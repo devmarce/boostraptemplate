@@ -16,6 +16,19 @@ if (function_exists('acf_add_local_field_group')):
                 'type' => 'text',
             ),
             array(
+                'key' => 'field_estado',
+                'label' => '✅ Estado',
+                'name' => 'estado',
+                'type' => 'select',
+                'choices' => array(
+                    'activo'   => 'Activo',
+                    'pausado'  => 'Pausado',
+                    'agotado'  => 'Agotado',
+                ),
+                'allow_null' => 0,
+                'ui' => 1,
+            ),
+            array(
                 'key' => 'field_categoria',
                 'label' => '🎂 Categoría',
                 'name' => 'categoria',
@@ -94,19 +107,6 @@ if (function_exists('acf_add_local_field_group')):
                 'type' => 'number',
                 'min' => 0,
                 'max' => 100,
-            ),
-            array(
-                'key' => 'field_estado',
-                'label' => '✅ Estado',
-                'name' => 'estado',
-                'type' => 'select',
-                'choices' => array(
-                    'activo'   => 'Activo',
-                    'pausado'  => 'Pausado',
-                    'agotado'  => 'Agotado',
-                ),
-                'allow_null' => 0,
-                'ui' => 1,
             ),
             array(
                 'key' => 'field_promo',

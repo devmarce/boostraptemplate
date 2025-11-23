@@ -1,4 +1,5 @@
 <?php
+
 /** 
  * Functions file.
  * 
@@ -14,7 +15,7 @@
 
 // Required WordPress variable
 if (!isset($content_width)) {
-    $content_width = 1140;// this will be override again in inc/classes/BootstrapBasic4.php `detectContentWidth()` method.
+    $content_width = 1140; // this will be override again in inc/classes/BootstrapBasic4.php `detectContentWidth()` method.
 }
 
 
@@ -93,69 +94,86 @@ if (function_exists('acf_add_options_page')) {
  *
  * Este CPT está orientado a vehículos y maquinaria agropecuaria.
  */
-function registrar_post_type_productos_pasteleria() {
-  $labels = array(
-    'name'                  => '🍥 Mis Productos',
-    'singular_name'         => 'Delicia',
-    'menu_name'             => 'Delicias',
-    'name_admin_bar'        => 'Delicia',
-    'add_new'               => 'Agregar nuevo',
-    'add_new_item'          => 'Nueva Delicia 🧁',
-    'new_item'              => 'Nueva delicia',
-    'edit_item'             => 'Editar delicia',
-    'view_item'             => 'Ver delicia',
-    'all_items'             => 'Todas las delicias',
-    'search_items'          => 'Buscar delicias',
-    'not_found'             => 'No se encontraron delicias',
-    'not_found_in_trash'    => 'No se encontraron delicias en la papelera',
-    'parent_item_colon'     => 'Delicia padre:',
-  );
-  
-  $args = array(
-    'labels'                => $labels,
-    'public'                => true,
-    'has_archive'           => true,
-    'rewrite'               => array('slug' => 'productos_pasteleria'),
-    'supports'              => array('title'),
-    'menu_icon'             => 'dashicons-heart',
-    'show_in_half'          => true,
-  );
+function registrar_post_type_productos_pasteleria()
+{
+    $labels = array(
+        'name'                  => '🍥 Mis Productos',
+        'singular_name'         => 'Delicia',
+        'menu_name'             => 'Delicias',
+        'name_admin_bar'        => 'Delicia',
+        'add_new'               => 'Agregar nuevo',
+        'add_new_item'          => 'Nueva Delicia 🧁',
+        'new_item'              => 'Nueva delicia',
+        'edit_item'             => 'Editar delicia',
+        'view_item'             => 'Ver delicia',
+        'all_items'             => 'Todas las delicias',
+        'search_items'          => 'Buscar delicias',
+        'not_found'             => 'No se encontraron delicias',
+        'not_found_in_trash'    => 'No se encontraron delicias en la papelera',
+        'parent_item_colon'     => 'Delicia padre:',
+    );
 
-  register_post_type('productos_pasteleria', $args);
+    $args = array(
+        'labels'                => $labels,
+        'public'                => true,
+        'has_archive'           => true,
+        'rewrite'               => array('slug' => 'productos_pasteleria'),
+        'supports'              => array('title'),
+        'menu_icon'             => 'dashicons-heart',
+        'show_in_half'          => true,
+    );
+
+    register_post_type('productos_pasteleria', $args);
 }
 add_action('init', 'registrar_post_type_productos_pasteleria');
 
 /**
- * Construye un array de máquinas agrupadas por categoría.
+ * Construye un array de productos de pastelería agrupados por categoría.
  *
  * @return array
  */
-function get_machines_grouped_by_category() {
+function get_pasteleria_grouped_by_category()
+{
     $args = array(
-        'post_type'      => 'machines',
+        'post_type'      => 'productos_pasteleria',
         'posts_per_page' => -1,
         'orderby'        => 'date',
         'order'          => 'DESC',
     );
 
-    $machines = get_posts($args);
-    $data_machine = [];
+    $productos = get_posts($args);
+    $data_pasteleria = [];
 
-    if ($machines) {
-        foreach ($machines as $post) {
+    if ($productos) {
+        foreach ($productos as $post) {
             setup_postdata($post);
 
             // Campos ACF con sanitización y fallback
-            $categoria = esc_html(get_field('categoria', $post->ID));
-            $modelo    = esc_html(get_field('modelo', $post->ID));
-            $imagen    = get_field('imagen', $post->ID);
+            $id               = esc_attr($post->ID);
+            $nombre           = esc_html(get_field('nombre', $post->ID));
+            $descripcion_corta = esc_html(get_field('descripcion_corta', $post->ID));
+            $descripcion      = get_field('descripcion', $post->ID);
+            $categoria        = esc_html(get_field('categoria', $post->ID));
+            $imagen           = get_field('imagen', $post->ID);
+            $galeria          = get_field('galeria', $post->ID);
+            $video            = esc_url(get_field('video', $post->ID));
+            $precio           = get_field('precio', $post->ID);
+            $precio_temporal  = get_field('precio_temporal', $post->ID);
+            $descuento        = get_field('descuento', $post->ID);
+            $estado           = esc_html(get_field('estado', $post->ID));
+            $promo            = esc_html(get_field('promo', $post->ID));
+            $stock            = get_field('stock', $post->ID);
+            $unidad           = esc_html(get_field('unidad', $post->ID));
+            $enlace_solicitar = esc_html(get_field('enlace_solicitar', $post->ID));
+            $hot_sale         = esc_html(get_field('hot_sale', $post->ID));
+            $modal_form       = esc_html(get_field('modal_form', $post->ID));
 
-            // Si no hay categoría o modelo, saltamos
-            if (empty($categoria) || empty($modelo)) {
+            // Si no hay categoría o nombre, saltamos
+            if (empty($categoria) || empty($nombre)) {
                 continue;
             }
 
-            // Fallback de imagen: si es array ACF, tomamos 'url'; si no, usamos placeholder
+            // Fallback de imagen principal
             if (is_array($imagen) && !empty($imagen['url'])) {
                 $imagen_url = esc_url($imagen['url']);
             } elseif (!empty($imagen)) {
@@ -164,24 +182,51 @@ function get_machines_grouped_by_category() {
                 $imagen_url = esc_url(get_stylesheet_directory_uri() . '/assets/img/default.png');
             }
 
+            // Galería: extraemos URLs si existen
+            $galeria_urls = [];
+            if (is_array($galeria)) {
+                foreach ($galeria as $img) {
+                    if (!empty($img['url'])) {
+                        $galeria_urls[] = esc_url($img['url']);
+                    }
+                }
+            }
+
             // Creamos el item
             $item = [
-                'nombre' => $modelo,
-                'imagen' => $imagen_url,
+                'id'               => $id,
+                'nombre'           => $nombre,
+                'descripcion_corta' => $descripcion_corta,
+                'descripcion'      => $descripcion,
+                'categoria'        => $categoria,
+                'imagen'           => $imagen_url,
+                'galeria'          => $galeria_urls,
+                'video'            => $video,
+                'precio'           => $precio,
+                'precio_temporal'  => $precio_temporal,
+                'descuento'        => $descuento,
+                'estado'           => $estado,
+                'promo'            => $promo,
+                'stock'            => $stock,
+                'unidad'           => $unidad,
+                'enlace_solicitar' => $enlace_solicitar,
+                'hot_sale'         => $hot_sale,
+                'modal_form'       => $modal_form,
             ];
 
             // Agrupamos por categoría
-            if (!isset($data_machine[$categoria])) {
-                $data_machine[$categoria] = [];
+            if (!isset($data_pasteleria[$categoria])) {
+                $data_pasteleria[$categoria] = [];
             }
-            $data_machine[$categoria][] = $item;
+            $data_pasteleria[$categoria][] = $item;
         }
 
         wp_reset_postdata();
     }
 
-    return $data_machine;
+    return $data_pasteleria;
 }
+
 
 /**
  * Devuelve clases de Bootstrap 4 para controlar la visibilidad de elementos
@@ -195,7 +240,8 @@ function get_machines_grouped_by_category() {
  *   echo responsive_device('desktop'); // d-none d-md-block
  *   echo responsive_device('mobile');  // d-block d-md-none
  */
-function responsive_device($device) {
+function responsive_device($device)
+{
     switch ($device) {
         case 'desktop':
             return 'd-none d-md-block';
@@ -204,4 +250,38 @@ function responsive_device($device) {
         default:
             return '';
     }
+}
+
+// Enqueue y pasar datos de los modelos al JS (forms-modales)
+add_action('wp_enqueue_scripts', function() {
+    wp_enqueue_script('form-modelos', get_stylesheet_directory_uri() . '/assets/js/form-modelos.js', ['jquery'], time(), true);
+
+    // Obtenemos los modelos
+    $productos_pasteleria_cat = get_pasteleria_grouped_by_category();
+    $productos = [];
+
+    foreach ($productos_pasteleria_cat as $categoria => $items) {
+        foreach ($items as $item) {
+            $productos[] = esc_html($item['nombre']);
+        }
+    }
+
+    wp_localize_script('form-modelos', 'deliciasData', [
+        'delicias' => $productos
+    ]);
+});
+
+
+// Función para generar URL de WhatsApp con mensaje personalizado
+function whatsapp_delicias($producto, $numero_wa) {
+    // Mensaje base
+    $mensaje = "Hola Dulcing, quiero consultar el siguiente producto: " . $producto;
+
+    // Codificar el mensaje para URL
+    $mensaje_codificado = urlencode($mensaje);
+
+    // Armar la URL de WhatsApp
+    $url = "https://wa.me/" . $numero_wa . "?text=" . $mensaje_codificado;
+
+    return $url;
 }

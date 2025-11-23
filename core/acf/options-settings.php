@@ -64,6 +64,44 @@ if (function_exists('acf_add_local_field_group')):
     ));
 endif;
 
+if (function_exists('acf_add_local_field_group')):
+    // Campos ACF de Sucursales y WhatsApp del header
+    acf_add_local_field_group(array(
+        'key' => 'group_5e3c09gfgfyh9f99c9ew',
+        'title' => '📍Número de WhatsApp para la consulta de los productos',
+        'fields' => array(
+            array(
+                'key' => 'field_whatsapp_delicias',
+                'label' => 'Número de WhatsApp',
+                'name' => 'whatsapp_delicias',
+                'type' => 'text',
+                'instructions' => 'Ingresar el número en formato. Ej: 541122000025',
+                'required' => 1,
+                'wrapper' => array(
+                    'width' => '100',
+                ),
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'options_page',
+                    'operator' => '==',
+                    'value' => 'acf-options-configuracion',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => 1,
+        'description' => '',
+    ));
+endif;
+
 
 if (function_exists('acf_add_local_field_group')):
     acf_add_local_field_group(array(
@@ -117,3 +155,104 @@ if (function_exists('acf_add_local_field_group')):
         'description' => '',
     ));
 endif;
+
+
+// ============================
+// 📑 Formulario de Cotización
+// ============================
+if (function_exists('acf_add_local_field_group')):
+
+    // Obtenemos todos los formularios de Contact Form 7
+    $cf7_forms = array();
+    if (class_exists('WPCF7_ContactForm')) {
+        $forms = WPCF7_ContactForm::find(array(
+            'orderby' => 'title',
+            'order'   => 'ASC',
+        ));
+        if ($forms) {
+            foreach ($forms as $form) {
+                $cf7_forms[$form->id()] = $form->title();
+            }
+        }
+    }
+
+    acf_add_local_field_group(array(
+        'key' => 'group_formularios',
+        'title' => '📍 Asignación de Formularios',
+        'fields' => array(
+            array(
+                'key' => 'field_formulario_cotizacion',
+                'label' => '▤ Formulario de Cotización',
+                'name' => 'formulario_cotizacion',
+                'type' => 'select',
+                'instructions' => 'Selecciona el formulario de Contact Form 7 que se usará para la cotización',
+                'required' => 0,
+                'choices' => $cf7_forms,
+                'ui' => 1,
+                'ajax' => 0,
+                'return_format' => 'value', // devuelve el ID del formulario
+                'wrapper' => array(
+                    'width' => '100',
+                ),
+            ),
+            array(
+                'key' => 'field_formulario_financiacion',
+                'label' => '▤ Formulario de Financiación',
+                'name' => 'formulario_financiacion',
+                'type' => 'select',
+                'instructions' => 'Selecciona el formulario de Contact Form 7 que se usará para la finaciación',
+                'required' => 0,
+                'choices' => $cf7_forms,
+                'ui' => 1,
+                'ajax' => 0,
+                'return_format' => 'value', // devuelve el ID del formulario
+                'wrapper' => array(
+                    'width' => '100',
+                ),
+            ),
+            array(
+                'key' => 'field_formulario_contacto',
+                'label' => '▤ Formulario de Contacto',
+                'name' => 'formulario_contacto',
+                'type' => 'select',
+                'instructions' => 'Selecciona el formulario de Contact Form 7 que se usará en la sección Contacto',
+                'required' => 0,
+                'choices' => $cf7_forms,
+                'ui' => 1,
+                'ajax' => 0,
+                'return_format' => 'value', // devuelve el ID del formulario
+                'wrapper' => array(
+                    'width' => '100',
+                ),
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'options_page',
+                    'operator' => '==',
+                    'value' => 'acf-options-configuracion',
+                ),
+            ),
+        ),
+        'menu_order' => 2,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'active' => 1,
+        'description' => '',
+    ));
+
+endif;
+
+// =========================
+// Render en frontend
+// =========================
+// Ejemplo de uso en tu template:
+// $form_id = get_field('formulario_cotizacion', 'option');
+// if ($form_id) {
+//     echo do_shortcode('[contact-form-7 id="' . esc_attr($form_id) . '"]');
+// } else {
+//     echo '<p>No se ha seleccionado ningún formulario de cotización.</p>';
+// }

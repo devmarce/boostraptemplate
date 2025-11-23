@@ -227,7 +227,7 @@
     });
 </script>
 
-
+<?php include(get_template_directory() . "/template-parts/forms-modales.php"); ?>
 <!--WordPress footer-->
 <?php wp_footer(); ?>
 <!--end WordPress footer-->

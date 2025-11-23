@@ -4,7 +4,7 @@ Theme URI: https://Marcelo.com
 Author: Marcelo MAM
 Author URI: https://github.com/devmarce/boostraptemplate
 Description: Bootstrap v.4 basic theme for developers to build their new theme very fast and easy. (WordPress 5 or Gutenberg ready.) The concept is to keep it basic, no rich features, no additional functions; all of these for theme developers will be easier to start develop their theme. Please read notice on Bootstrap Basic 4 Help page in Dashboard &gt; Appearance &gt; Bootstrap Basic4 Help.
-Version: 1.2.0
+Version: 1.2.7
 Requires PHP: 5.5
 Requires at least: 5.0
 Tested up to: 6.9
@@ -98,6 +98,234 @@ body {
 .bg-header {
   background-color: var(--color-primary);
 }
+/* ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ STYLE BUTTOM ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ */
+.btn-bg-white {
+  background: #fff !important;
+}
 
-/* ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ HOMEPAGE SLIDER ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ */
+.btn-bg-white:hover {
+  cursor: pointer;
+
+}
+
+/* btn Solicitar Azul */
+.btn-whatsapp {
+  background: #25D366 !important;
+  color: #fff !important;
+}
+
+.btn-whatsapp:hover {
+  background: var(--color-primary) !important;
+  color: var(--color-secondary) !important;
+  cursor: pointer;
+
+}
+
+/* ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ STYLES MODAL FORMS ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ */
+/* ===== Modal ===== */
+.modal-content {
+  border-radius: 8px;
+  border: 1px solid var(--color-primary);
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.modal-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.modal-header .btn-close {
+  background: #ff000000;
+  color: #fff;
+  border: none;
+}
+
+.modal-header .btn-close:hover {
+  transform: scale(1.2);
+  font-weight: 700;
+}
+
+.modal-body {
+  padding: 0.5rem 0rem !important;
+}
+
+.modal-title-destac {
+  color: var(--color-secondary);
+  font-weight: bold;
+}
+
+/* END: style modal form */
+
+/* ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ STYLES CAMPOS FORMS CF7 ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ */
+/* ===== General form layout ===== */
+.wpcf7-form .row {
+  margin: 0;
+}
+
+.wpcf7-form .col-12 {
+  margin-bottom: 0px !important;
+}
+
+/* ===== Formulario CF7 ===== */
+.wpcf7-form .row {
+  margin: 0;
+}
+
+.wpcf7-form .row p {
+  margin: 0.5rem !important;
+}
+
+/* ===== Select (modelo) ===== */
+.wpcf7-form select {
+  width: 100%;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 6px;
+  background-color: #fff;
+  color: #333;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  appearance: none;
+  /* elimina estilos nativos */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230056B3' stroke-width='2' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 12px 8px;
+}
+
+.wpcf7-form select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 6px rgba(0, 86, 179, 0.3);
+}
+
+/* Opciones dentro del select */
+.wpcf7-form select option {
+  padding: 0.5rem;
+  color: #333;
+}
+
+/* Inputs y textarea */
+.wpcf7-form input[type="text"],
+.wpcf7-form input[type="tel"],
+.wpcf7-form input[type="email"],
+.wpcf7-form input[type="number"],
+.wpcf7-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.wpcf7-form input:focus,
+.wpcf7-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 6px rgba(0, 86, 179, 0.3);
+}
+
+/* Checkbox / aceptación */
+.wpcf7-form .wpcf7-form-control-wrap label {
+  margin-bottom: 0px !important;
+}
+
+.wpcf7-form .wpcf7-form-control-wrap {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* ===== Submit button ===== */
+.wpcf7-form input[type="submit"] {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.wpcf7-form input[type="submit"]:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+/* ===== Inputs & Textareas ===== */
+.wpcf7-form input[type="text"],
+.wpcf7-form input[type="tel"],
+.wpcf7-form input[type="email"],
+.wpcf7-form input[type="number"],
+.wpcf7-form textarea {
+  width: 100%;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 6px;
+  background-color: #fff;
+  color: #333;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.wpcf7-form input:focus,
+.wpcf7-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 6px rgba(0, 86, 179, 0.3);
+}
+
+/* Placeholder styling */
+.wpcf7-form ::placeholder {
+  color: #777;
+  font-style: italic;
+}
+
+/* ===== Checkbox / aceptación ===== */
+.acceptance p {
+  margin: 0px !important;
+}
+
+.wpcf7-form .acceptance label {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.wpcf7-form .acceptance input[type="checkbox"] {
+  accent-color: var(--color-primary);
+  margin-right: 0.5rem;
+}
+
+/* ===== Response messages ===== */
+.wpcf7-response-output {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.wpcf7-response-output.wpcf7-mail-sent-ok {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.wpcf7-response-output.wpcf7-validation-errors,
+.wpcf7-response-output.wpcf7-mail-sent-ng {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* END: style campos CF7 */
 

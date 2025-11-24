@@ -101,6 +101,15 @@ if (function_exists('acf_add_local_field_group')):
                 'step' => '0.01',
             ),
             array(
+                'key' => 'field_precio_temporal_hasta',
+                'label' => '📅 Vigencia hasta | (⏲️ Precio Temporal)',
+                'name' => 'precio_temporal_hasta',
+                'type' => 'date_picker', // también puedes usar 'datetime_picker'
+                'display_format' => 'd/m/Y', // formato que se mostrará en el admin
+                'return_format'  => 'Y-m-d', // formato que se guardará en la BD
+                'first_day'      => 1,       // lunes como primer día de la semana
+            ),
+            array(
                 'key' => 'field_descuento',
                 'label' => '📱 Descuento (%)',
                 'name' => 'descuento',
@@ -163,7 +172,7 @@ if (function_exists('acf_add_local_field_group')):
                 array(
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'productos_pasteleria',
+                    'value' => 'delicias_pasteleria',
                 ),
             ),
         ),

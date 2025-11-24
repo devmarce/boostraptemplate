@@ -97,7 +97,7 @@ if (function_exists('acf_add_options_page')) {
 function registrar_post_type_productos_pasteleria()
 {
     $labels = array(
-        'name'                  => '🍥 Mis Productos',
+        'name'                  => '🍥 Mis Delicias',
         'singular_name'         => 'Delicia',
         'menu_name'             => 'Delicias',
         'name_admin_bar'        => 'Delicia',
@@ -117,13 +117,13 @@ function registrar_post_type_productos_pasteleria()
         'labels'                => $labels,
         'public'                => true,
         'has_archive'           => true,
-        'rewrite'               => array('slug' => 'productos_pasteleria'),
+        'rewrite'               => array('slug' => 'delicias_pasteleria'),
         'supports'              => array('title'),
         'menu_icon'             => 'dashicons-heart',
         'show_in_half'          => true,
     );
 
-    register_post_type('productos_pasteleria', $args);
+    register_post_type('delicias_pasteleria', $args);
 }
 add_action('init', 'registrar_post_type_productos_pasteleria');
 
@@ -135,7 +135,7 @@ add_action('init', 'registrar_post_type_productos_pasteleria');
 function get_pasteleria_grouped_by_category()
 {
     $args = array(
-        'post_type'      => 'productos_pasteleria',
+        'post_type'      => 'delicias_pasteleria',
         'posts_per_page' => -1,
         'orderby'        => 'date',
         'order'          => 'DESC',

@@ -11,14 +11,14 @@ $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 $id = $id ?: 0;
 
 if ($id <= 0) {
-    wp_redirect(home_url('/productos_pasteleria/'));
+    wp_redirect(home_url('/delicias_pasteleria/'));
     exit;
 }
 
 // Obtenemos el post
 $post = get_post($id);
 
-if (!$post || $post->post_type !== 'productos_pasteleria') {
+if (!$post || $post->post_type !== 'delicias_pasteleria') {
     echo "<div class='container'><h2>🚫 La delicia no existe.</h2></div>";
     get_footer();
     return;

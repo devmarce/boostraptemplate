@@ -239,7 +239,7 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
 
       <?php if ($precio_temporal > 0 && !empty($precio_temporal_hasta)): ?>
         <p><strong>Precio:</strong> <del>$<?php echo number_format($precio, 2); ?></del></p>
-        <p><strong>Precio oferta:</strong> $<?php echo number_format($precio_temporal, 2); ?></p>
+        <p><strong>Precio oferta:</strong> <span class="precio-oferta">$<?php echo number_format($precio_temporal, 2); ?></span></p>
         <p><strong>Vigencia:</strong> hasta <?php echo date_i18n('d/m/Y', strtotime($precio_temporal_hasta)); ?></p>
         <div id="contador-<?php echo esc_attr($id); ?>" class="contador-oferta"></div>
       <?php else: ?>
@@ -295,30 +295,68 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
 
 </div>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const contador = document.getElementById("contador-<?php echo esc_attr($id); ?>");
-    const fechaLimite = new Date("<?php echo esc_js($precio_temporal_hasta); ?>T23:59:59").getTime();
+document.addEventListener("DOMContentLoaded", function () {
 
-    function actualizarContador() {
-      const ahora = new Date().getTime();
-      const diferencia = fechaLimite - ahora;
+  const contador = document.getElementById("contador-<?php echo esc_attr($id); ?>");
 
-      if (diferencia <= 0) {
-        contador.innerHTML = "<span class='expirado'>⏰ Oferta expirada</span>";
-        return;
+  // Si no hay precio temporal no ejecutamos nada
+  if (!contador) return;
+
+  // Elementos de precios dentro del bloque actual
+  const precioReal   = contador.closest(".delicia-detalles").querySelector("del");
+  const precioOferta = contador.closest(".delicia-detalles").querySelector(".precio-oferta");
+
+  // Fecha límite desde PHP
+  const fechaLimite = new Date("<?php echo esc_js($precio_temporal_hasta); ?>T23:59:59").getTime();
+
+  function actualizar() {
+    const ahora = new Date().getTime();
+    const diff = fechaLimite - ahora;
+
+    /* =====================================================
+       ❌ OFERTA EXPIRADA
+    ===================================================== */
+    if (diff <= 0) {
+
+      // Mensaje
+      contador.innerHTML = "<span class='expirado'>⏰ Oferta expirada</span>";
+
+      // Precio real → sin tachar
+      if (precioReal) precioReal.style.textDecoration = "none";
+
+      // Precio oferta → rojo y tachado
+      if (precioOferta) {
+        precioOferta.style.textDecoration = "line-through";
+        precioOferta.style.color = "red";
       }
 
-      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-      contador.innerHTML = `❤️‍🔥 Quedan <strong>${dias}d ${horas}h ${minutos}m ${segundos}s</strong>`;
+      return;
     }
 
-    actualizarContador();
-    setInterval(actualizarContador, 1000);
-  });
+    /* =====================================================
+       ✔ OFERTA VIGENTE
+    ===================================================== */
+    if (precioReal) precioReal.style.textDecoration = "line-through";
+
+    if (precioOferta) {
+      precioOferta.style.textDecoration = "none";
+      precioOferta.style.color = "#ae10ff";
+      precioOferta.style.fontWeight = "bolder";
+    }
+
+    // Cálculo de tiempo restante
+    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+
+    contador.innerHTML = `❤️‍🔥 Quedan <strong>${dias}d ${horas}h ${minutos}m ${segundos}s</strong>`;
+  }
+
+  actualizar();
+  setInterval(actualizar, 1000);
+});
 </script>
+
 
 <?php get_footer(); ?>

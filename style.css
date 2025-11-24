@@ -28,7 +28,7 @@ Required WordPress CSS
    ============================== */
 :root {
   /* Colores */
-  --color-primary: #e7a6c7   !important;
+  --color-primary: #e7a6c7 !important;
   /* azul corporativo */
   --color-secondary: rgb(65 0 149) !important;
   /* amarillo destacado */
@@ -98,12 +98,26 @@ body {
 .bg-header {
   background-color: var(--color-primary);
 }
+
 /* ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ STYLE BUTTOM ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ */
 .btn-bg-white {
   background: #fff !important;
 }
 
 .btn-bg-white:hover {
+  cursor: pointer;
+
+}
+
+/* btn Solicitar Azul */
+.btn-primary-form {
+  background: var(--color-secondary) !important;
+  color: #fff !important;
+}
+
+.btn-primary-form:hover {
+  background: var(--color-primary) !important;
+  color: var(--color-secondary) !important;
   cursor: pointer;
 
 }
@@ -328,4 +342,3 @@ body {
 }
 
 /* END: style campos CF7 */
-

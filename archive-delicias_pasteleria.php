@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template dinámico con tabs por categoría + pestaña "Todos los productos".
  *
@@ -102,6 +103,13 @@ $productos_grouped = get_pasteleria_grouped_by_category();
     color: #555;
   }
 
+  .title-prod-category {
+    background: #0a050591;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px #fff solid;
+  }
+
   /* ===== Responsive ===== */
   @media (max-width: 767px) {
     .zocalo-category {
@@ -173,13 +181,13 @@ $productos_grouped = get_pasteleria_grouped_by_category();
                     <?php foreach ($productos_grouped as $categoria => $items) : ?>
 
                       <div class="zocalo-category"
-                        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/custom/category-back.png');">
-                        <div>
+                        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/custom/category-back3.png');">
+                        <div class="title-prod-category">
                           <h2 class="title-categoria text-white text-uppercase">
                             <?php echo esc_html(ucfirst($categoria)); ?>
                           </h2>
                         </div>
-                        <div><img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-blanco.png" alt="Logo"></div>
+                        <div><img src="<?php echo get_template_directory_uri(); ?>/assets/img/marca/logo dulcing.png" alt="Logo"></div>
                       </div>
 
                       <div class="row">
@@ -198,8 +206,8 @@ $productos_grouped = get_pasteleria_grouped_by_category();
 
                                 <h5 class="card-title"><?php echo esc_html($item['nombre']); ?></h5>
 
-                                <?php if (!empty($item['promo'])) : ?>
-                                  <span class="badge badge-warning"><?php echo esc_html($item['promo']); ?></span>
+                                <?php if (!empty($item['tag_promo'])) : ?>
+                                  <span class="badge badge-warning"><?php echo esc_html($item['tag_promo']); ?></span>
                                 <?php endif; ?>
 
                                 <?php if (!empty($item['precio'])) : ?>
@@ -253,9 +261,9 @@ $productos_grouped = get_pasteleria_grouped_by_category();
                       aria-labelledby="<?php echo esc_attr($tab_id); ?>-tab">
 
                       <div class="zocalo-category"
-                        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/custom/category-back.png');">
+                        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/custom/category-back3.png');">
 
-                        <div>
+                        <div class="title-prod-category">
                           <h2 class="title-categoria text-white text-uppercase">
                             <?php echo esc_html(ucfirst($categoria)); ?>
                           </h2>

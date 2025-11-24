@@ -94,7 +94,7 @@ if (function_exists('acf_add_local_field_group')):
             ),
             array(
                 'key' => 'field_precio_temporal',
-                'label' => '⏲️ Precio temporal',
+                'label' => '❤️‍🔥 Precio temporal',
                 'name' => 'precio_temporal',
                 'type' => 'number',
                 'prepend' => '$',
@@ -102,7 +102,7 @@ if (function_exists('acf_add_local_field_group')):
             ),
             array(
                 'key' => 'field_precio_temporal_hasta',
-                'label' => '📅 Vigencia hasta | (⏲️ Precio Temporal)',
+                'label' => '📅 Vigencia hasta | (❤️‍🔥 Precio Temporal)',
                 'name' => 'precio_temporal_hasta',
                 'type' => 'date_picker', // también puedes usar 'datetime_picker'
                 'display_format' => 'd/m/Y', // formato que se mostrará en el admin
@@ -120,7 +120,7 @@ if (function_exists('acf_add_local_field_group')):
             array(
                 'key' => 'field_promo',
                 'label' => '🏷️ Promo / etiqueta',
-                'name' => 'promo',
+                'name' => 'tag_promo',
                 'type' => 'text',
             ),
             array(

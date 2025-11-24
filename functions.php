@@ -161,7 +161,7 @@ function get_pasteleria_grouped_by_category()
             $precio_temporal  = get_field('precio_temporal', $post->ID);
             $descuento        = get_field('descuento', $post->ID);
             $estado           = esc_html(get_field('estado', $post->ID));
-            $promo            = esc_html(get_field('promo', $post->ID));
+            $tag_promo        = esc_html(get_field('tag_promo', $post->ID));
             $stock            = get_field('stock', $post->ID);
             $unidad           = esc_html(get_field('unidad', $post->ID));
             $enlace_solicitar = esc_html(get_field('enlace_solicitar', $post->ID));
@@ -194,25 +194,25 @@ function get_pasteleria_grouped_by_category()
 
             // Creamos el item
             $item = [
-                'id'               => $id,
-                'nombre'           => $nombre,
-                'descripcion_corta' => $descripcion_corta,
-                'descripcion'      => $descripcion,
-                'categoria'        => $categoria,
-                'imagen'           => $imagen_url,
-                'galeria'          => $galeria_urls,
-                'video'            => $video,
-                'precio'           => $precio,
-                'precio_temporal'    => get_field('precio_temporal', $id) ?: 0,
+                'id'                        => $id,
+                'nombre'                    => $nombre,
+                'descripcion_corta'         => $descripcion_corta,
+                'descripcion'               => $descripcion,
+                'categoria'                 => $categoria,
+                'imagen'                    => $imagen_url,
+                'galeria'                   => $galeria_urls,
+                'video'                     => $video,
+                'precio'                    => $precio,
+                'precio_temporal'           => get_field('precio_temporal', $id) ?: 0,
                 'precio_temporal_hasta' => get_field('precio_temporal_hasta', $id) ?: '',
-                'descuento'        => $descuento,
-                'estado'           => $estado,
-                'promo'            => $promo,
-                'stock'            => $stock,
-                'unidad'           => $unidad,
-                'enlace_solicitar' => $enlace_solicitar,
-                'hot_sale'         => $hot_sale,
-                'modal_form'       => $modal_form,
+                'descuento'                 => $descuento,
+                'estado'                    => $estado,
+                'tag_promo'                 => $tag_promo,
+                'stock'                     => $stock,
+                'unidad'                    => $unidad,
+                'enlace_solicitar'          => $enlace_solicitar,
+                'hot_sale'                  => $hot_sale,
+                'modal_form'                => $modal_form,
             ];
 
             // Agrupamos por categoría

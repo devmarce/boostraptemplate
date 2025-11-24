@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template Name: Ver Delicia
  * Description: Muestra un producto de pastelería según el ID recibido por GET (?id=123)
@@ -11,17 +12,17 @@ $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 $id = $id ?: 0;
 
 if ($id <= 0) {
-    wp_redirect(home_url('/delicias_pasteleria/'));
-    exit;
+  wp_redirect(home_url('/delicias_pasteleria/'));
+  exit;
 }
 
 // Obtenemos el post
 $post = get_post($id);
 
 if (!$post || $post->post_type !== 'delicias_pasteleria') {
-    echo "<div class='container'><h2>🚫 La delicia no existe.</h2></div>";
-    get_footer();
-    return;
+  echo "<div class='container'><h2>🚫 La delicia no existe.</h2></div>";
+  get_footer();
+  return;
 }
 
 // Datos ACF (sanitizados)
@@ -44,8 +45,8 @@ $hot_sale               = get_field('hot_sale', $id);
 // Imagen principal
 $imagen_principal = get_field('imagen', $id);
 $imagen_url = ($imagen_principal && isset($imagen_principal['url']))
-                ? $imagen_principal['url']
-                : get_stylesheet_directory_uri() . '/assets/img/default.png';
+  ? $imagen_principal['url']
+  : get_stylesheet_directory_uri() . '/assets/img/default.png';
 
 // Galería
 $galeria = get_field('galeria', $id);
@@ -55,85 +56,85 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
 ?>
 
 <style>
-.ver-delicia {
+  .ver-delicia {
     margin-top: 40px;
     margin-bottom: 60px;
     font-family: 'Segoe UI', Roboto, sans-serif;
     color: #333;
-}
+  }
 
-.ver-delicia h1 {
+  .ver-delicia h1 {
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 15px;
     color: #fd04c7;
     text-align: center;
-}
+  }
 
-.ver-delicia h2 {
+  .ver-delicia h2 {
     font-size: 1.6rem;
     margin-top: 40px;
     margin-bottom: 20px;
     border-bottom: 2px solid #eee;
     padding-bottom: 5px;
     color: #444;
-}
+  }
 
-.badge {
+  .badge {
     display: inline-block;
     padding: 6px 12px;
     font-size: 0.9rem;
     border-radius: 20px;
     margin: 0 5px;
-}
+  }
 
-.badge-success {
+  .badge-success {
     background-color: #ae10ff;
     color: #fff;
-}
+  }
 
-.badge-danger {
+  .badge-danger {
     background-color: #dc3545;
     color: #fff;
-}
+  }
 
-.delicia-info {
+  .delicia-info {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
     margin-top: 25px;
-}
+  }
 
-.delicia-imagen {
+  .delicia-imagen {
     flex: 1 1 300px;
     text-align: center;
-}
+  }
 
-.delicia-imagen img {
+  .delicia-imagen img {
     max-width: 100%;
     height: auto;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
 
-.delicia-detalles {
+  .delicia-detalles {
+    border: 1px solid #ef00ff;
     flex: 1 1 300px;
-    background: #fafafa;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
 
-.delicia-detalles p {
+  .delicia-detalles p {
     margin-bottom: 10px;
     font-size: 1rem;
-}
+  }
 
-.delicia-detalles strong {
+  .delicia-detalles strong {
     color: #555;
-}
+  }
 
-.btn {
+  .btn {
     display: inline-block;
     margin-top: 10px;
     margin-right: 8px;
@@ -142,182 +143,182 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
     border-radius: 6px;
     text-decoration: none;
     transition: all 0.3s ease;
-}
+  }
 
-.btn-primary {
+  .btn-primary {
     background-color: #b23c3c;
     color: #fff;
     border: none;
-}
+  }
 
-.btn-primary:hover {
+  .btn-primary:hover {
     background-color: #922d2d;
     transform: translateY(-2px);
-}
+  }
 
-.btn-secondary {
+  .btn-secondary {
     background-color: #ccc;
     color: #666;
     border: none;
-}
+  }
 
-.btn-whatsapp {
+  .btn-whatsapp {
     background-color: #25D366;
     color: #fff;
     border: none;
-}
+  }
 
-.btn-whatsapp:hover {
+  .btn-whatsapp:hover {
     background-color: #1ebe5d;
     transform: translateY(-2px);
-}
+  }
 
-.galeria {
+  .galeria {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 15px;
     margin-top: 20px;
-}
+  }
 
-.galeria-item {
+  .galeria-item {
     width: 100%;
     border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-}
+  }
 
-.galeria-item:hover {
+  .galeria-item:hover {
     transform: scale(1.05);
-}
+  }
 
-.contador-oferta {
+  .contador-oferta {
     margin-top: 10px;
     font-size: 1rem;
     font-weight: bold;
     color: #ae10ff;
-}
+  }
 
-.contador-oferta .expirado {
+  .contador-oferta .expirado {
     color: #dc3545;
-}
-.contador-oferta {
+  }
+
+  .contador-oferta {
     margin-top: 10px;
     font-size: 1rem;
     font-weight: bold;
     color: #ae10ff;
-}
+  }
 
-.contador-oferta .expirado {
+  .contador-oferta .expirado {
     color: #dc3545;
-}
-
+  }
 </style>
 
 <div class="container ver-delicia">
 
-    <h1><?php echo esc_html($nombre); ?></h1>
+  <h1><?php echo esc_html($nombre); ?></h1>
 
-    <?php if ($promo): ?>
-        <span class="badge badge-success"><?php echo esc_html($promo); ?></span>
-    <?php endif; ?>
+  <?php if ($promo): ?>
+    <span class="badge badge-success"><?php echo esc_html($promo); ?></span>
+  <?php endif; ?>
 
-    <?php if ($hot_sale): ?>
-        <span class="badge badge-danger">🔥 Hot Sale</span>
-    <?php endif; ?>
+  <?php if ($hot_sale): ?>
+    <span class="badge badge-danger">🔥 Hot Sale</span>
+  <?php endif; ?>
 
-    <div class="delicia-info">
+  <div class="delicia-info">
 
-        <div class="delicia-imagen">
-            <img src="<?php echo esc_url($imagen_url); ?>" alt="<?php echo esc_attr($nombre); ?>">
-        </div>
-
-        <div class="delicia-detalles">
-            <p><strong>Descripción corta:</strong> <?php echo esc_html($descripcion_corta); ?></p>
-            <p><strong>Estado:</strong> <?php echo esc_html($estado); ?></p>
-            <p><strong>Categoría:</strong> <?php echo esc_html($categoria); ?></p>
-
-            <?php if ($precio_temporal > 0 && !empty($precio_temporal_hasta)): ?>
-                <p><strong>Precio:</strong> <del>$<?php echo number_format($precio, 2); ?></del></p>
-                <p><strong>Precio oferta:</strong> $<?php echo number_format($precio_temporal, 2); ?></p>
-                <p><strong>Vigencia:</strong> hasta <?php echo date_i18n('d/m/Y', strtotime($precio_temporal_hasta)); ?></p>
-                <div id="contador-<?php echo esc_attr($id); ?>" class="contador-oferta"></div>
-            <?php else: ?>
-                <p><strong>Precio:</strong> $<?php echo number_format($precio, 2); ?></p>
-            <?php endif; ?>
-
-            <?php if ($descuento > 0): ?>
-                <p><strong>Descuento:</strong> <?php echo $descuento; ?>%</p>
-            <?php endif; ?>
-
-            <p><strong>Stock disponible:</strong> <?php echo $stock; ?> (<?php echo esc_html($unidad); ?>)</p>
-
-            <hr>
-
-            <!-- Botones de acción -->
-            <?php if ($modal_form): ?>
-                <a
-                    href="<?php echo !empty($enlace_solicitar) ? esc_url($enlace_solicitar) : '#'; ?>"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-primary <?php echo !empty($modal_form) ? 'js-cotizar-delicia' : ''; ?>"
-                    data-model-id="<?php echo esc_attr($id); ?>"
-                    data-model-name="<?php echo esc_attr($nombre); ?>"
-                    data-model-category="<?php echo esc_attr($categoria); ?>">
-                    Encargar
-                </a>
-            <?php endif; ?>
-
-            <!-- btn whatsapp -->
-            <?php echo whatsapp_delicias(esc_attr($nombre), $wa_delicias); ?>
-        </div>
+    <div class="delicia-imagen">
+      <img src="<?php echo esc_url($imagen_url); ?>" alt="<?php echo esc_attr($nombre); ?>">
     </div>
 
-    <hr>
+    <div class="delicia-detalles">
+      <p><strong>Descripción corta:</strong> <?php echo esc_html($descripcion_corta); ?></p>
+      <p><strong>Estado:</strong> <?php echo esc_html($estado); ?></p>
+      <p><strong>Categoría:</strong> <?php echo esc_html($categoria); ?></p>
 
-    <h2>Descripción completa</h2>
-    <div><?php echo wp_kses_post($descripcion); ?></div>
+      <?php if ($precio_temporal > 0 && !empty($precio_temporal_hasta)): ?>
+        <p><strong>Precio:</strong> <del>$<?php echo number_format($precio, 2); ?></del></p>
+        <p><strong>Precio oferta:</strong> $<?php echo number_format($precio_temporal, 2); ?></p>
+        <p><strong>Vigencia:</strong> hasta <?php echo date_i18n('d/m/Y', strtotime($precio_temporal_hasta)); ?></p>
+        <div id="contador-<?php echo esc_attr($id); ?>" class="contador-oferta"></div>
+      <?php else: ?>
+        <p><strong>Precio:</strong> $<?php echo number_format($precio, 2); ?></p>
+      <?php endif; ?>
 
-    <hr>
+      <?php if ($descuento > 0): ?>
+        <p><strong>Descuento:</strong> <?php echo $descuento; ?>%</p>
+      <?php endif; ?>
 
-    <h2>Galería</h2>
-    <div class="galeria">
-        <?php
-        if ($galeria && is_array($galeria)):
-            foreach ($galeria as $img):
-                if (!empty($img['url'])): ?>
-                    <img src="<?php echo esc_url($img['url']); ?>" class="galeria-item" alt="<?php echo esc_attr($nombre); ?>">
-                <?php endif;
-            endforeach;
-        endif;
-        ?>
+      <p><strong>Stock disponible:</strong> <?php echo $stock; ?> (<?php echo esc_html($unidad); ?>)</p>
+
+      <hr>
+
+      <!-- Botones de acción -->
+      <?php if ($modal_form): ?>
+        <a
+          href="<?php echo !empty($enlace_solicitar) ? esc_url($enlace_solicitar) : '#'; ?>"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary-form <?php echo !empty($modal_form) ? 'js-cotizar-delicia' : ''; ?>"
+          data-model-id="<?php echo esc_attr($id); ?>"
+          data-model-name="<?php echo esc_attr($nombre); ?>"
+          data-model-category="<?php echo esc_attr($categoria); ?>">
+          Encargar
+        </a>
+      <?php endif; ?>
+
+      <!-- btn whatsapp -->
+      <?php echo whatsapp_delicias(esc_attr($nombre), $wa_delicias); ?>
     </div>
+  </div>
+
+  <hr>
+
+  <h2>Descripción completa</h2>
+  <div><?php echo wp_kses_post($descripcion); ?></div>
+
+  <hr>
+
+  <h2>Galería</h2>
+  <div class="galeria">
+    <?php
+    if ($galeria && is_array($galeria)):
+      foreach ($galeria as $img):
+        if (!empty($img['url'])): ?>
+          <img src="<?php echo esc_url($img['url']); ?>" class="galeria-item" alt="<?php echo esc_attr($nombre); ?>">
+    <?php endif;
+      endforeach;
+    endif;
+    ?>
+  </div>
 
 </div>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function() {
     const contador = document.getElementById("contador-<?php echo esc_attr($id); ?>");
     const fechaLimite = new Date("<?php echo esc_js($precio_temporal_hasta); ?>T23:59:59").getTime();
 
     function actualizarContador() {
-        const ahora = new Date().getTime();
-        const diferencia = fechaLimite - ahora;
+      const ahora = new Date().getTime();
+      const diferencia = fechaLimite - ahora;
 
-        if (diferencia <= 0) {
-            contador.innerHTML = "<span class='expirado'>⏰ Oferta expirada</span>";
-            return;
-        }
+      if (diferencia <= 0) {
+        contador.innerHTML = "<span class='expirado'>⏰ Oferta expirada</span>";
+        return;
+      }
 
-        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-        const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-        const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-        contador.innerHTML = `⏲️ Quedan <strong>${dias}d ${horas}h ${minutos}m ${segundos}s</strong>`;
+      contador.innerHTML = `❤️‍🔥 Quedan <strong>${dias}d ${horas}h ${minutos}m ${segundos}s</strong>`;
     }
 
     actualizarContador();
     setInterval(actualizarContador, 1000);
-});
+  });
 </script>
 
 <?php get_footer(); ?>

@@ -31,7 +31,7 @@ $descripcion            = get_field('descripcion', $id);
 $descripcion_corta      = get_field('descripcion_corta', $id);
 $estado                 = get_field('estado', $id);
 $categoria              = get_field('categoria', $id);
-$precio                 = floatval(get_field('precio', $id));
+$precio_real            = floatval(get_field('precio', $id));
 $precio_temporal        = floatval(get_field('precio_temporal', $id));
 $precio_temporal_hasta  = get_field('precio_temporal_hasta', $id);
 $descuento              = intval(get_field('descuento', $id));
@@ -238,7 +238,7 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
       <p><strong>Categoría:</strong> <?php echo esc_html($categoria); ?></p>
 
       <?php if ($precio_temporal > 0 && !empty($precio_temporal_hasta)): ?>
-        <p><strong>Precio:</strong> <del>$<?php echo number_format($precio, 2); ?></del></p>
+        <p><strong>Precio:</strong> <del>$<?php echo number_format($precio_real, 2); ?></del></p>
         <p><strong>Precio oferta:</strong> <span class="precio-oferta">$<?php echo number_format($precio_temporal, 2); ?></span></p>
         <p><strong>Vigencia:</strong> hasta <?php echo date_i18n('d/m/Y', strtotime($precio_temporal_hasta)); ?></p>
         <div id="contador-<?php echo esc_attr($id); ?>" class="contador-oferta"></div>

@@ -337,24 +337,30 @@ $productos_grouped = get_pasteleria_grouped_by_category();
                                 <?php endif; ?>
 
                                 <!-- Precios -->
-                                <?php if ($precio_temporal > 0 && $precio_temporal_hasta) : ?>
+                                  <?php if ($precio_temporal > 0 && !empty($precio_temporal_hasta)) : ?>
 
-                                  <p><del class="precio-real">$<?php echo number_format($precio_real, 2); ?></del></p>
+                                    <p><strong>Precio:</strong>
+                                      <del class="precio-real">$<?php echo number_format($precio_real, 2); ?></del>
+                                    </p>
 
-                                  <p>
-                                    <span class="precio-oferta">$<?php echo number_format($precio_temporal, 2); ?></span>
-                                  </p>
+                                    <p><strong>Precio oferta:</strong>
+                                      <span class="precio-oferta">$<?php echo number_format($precio_temporal, 2); ?></span>
+                                    </p>
 
-                                  <div class="contador-oferta"
-                                    id="contador-<?php echo $id_producto; ?>"
-                                    data-fecha="<?php echo esc_attr($precio_temporal_hasta); ?>">
-                                  </div>
+                                    <p><strong>Vigencia:</strong> hasta
+                                      <?php echo date_i18n('d/m/Y', strtotime($precio_temporal_hasta)); ?>
+                                    </p>
 
-                                <?php else : ?>
+                                    <div class="contador-oferta"
+                                      id="contador-<?php echo $id_producto; ?>"
+                                      data-fecha="<?php echo esc_attr($precio_temporal_hasta); ?>">
+                                    </div>
 
-                                  <p>Precio: $<?php echo number_format($precio_real, 2); ?></p>
+                                  <?php else : ?>
 
-                                <?php endif; ?>
+                                    <p><strong>Precio:</strong> $<?php echo number_format($precio_real, 2); ?></p>
+
+                                  <?php endif; ?>
 
                                 <?php if (!empty($item['descripcion_corta'])) : ?>
                                   <p class="card-text"><?php echo esc_html($item['descripcion_corta']); ?></p>

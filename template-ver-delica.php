@@ -25,20 +25,21 @@ if (!$post || $post->post_type !== 'delicias_pasteleria') {
 }
 
 // Datos ACF (sanitizados)
-$nombre            = get_field('nombre', $id);
-$descripcion       = get_field('descripcion', $id);
-$descripcion_corta = get_field('descripcion_corta', $id);
-$estado            = get_field('estado', $id);
-$categoria         = get_field('categoria', $id);
-$precio            = floatval(get_field('precio', $id));
-$precio_temporal   = floatval(get_field('precio_temporal', $id));
-$descuento         = intval(get_field('descuento', $id));
-$stock             = intval(get_field('stock', $id));
-$unidad            = get_field('unidad', $id);
-$promo             = get_field('promo', $id);
-$modal_form        = get_field('modal_form', $id);
-$enlace_solicitar  = get_field('enlace_solicitar', $id);
-$hot_sale          = get_field('hot_sale', $id);
+$nombre                 = get_field('nombre', $id);
+$descripcion            = get_field('descripcion', $id);
+$descripcion_corta      = get_field('descripcion_corta', $id);
+$estado                 = get_field('estado', $id);
+$categoria              = get_field('categoria', $id);
+$precio                 = floatval(get_field('precio', $id));
+$precio_temporal        = floatval(get_field('precio_temporal', $id));
+$precio_temporal_hasta  = get_field('precio_temporal_hasta', $id);
+$descuento              = intval(get_field('descuento', $id));
+$stock                  = intval(get_field('stock', $id));
+$unidad                 = get_field('unidad', $id);
+$promo                  = get_field('promo', $id);
+$modal_form             = get_field('modal_form', $id);
+$enlace_solicitar       = get_field('enlace_solicitar', $id);
+$hot_sale               = get_field('hot_sale', $id);
 
 // Imagen principal
 $imagen_principal = get_field('imagen', $id);
@@ -188,6 +189,28 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
 .galeria-item:hover {
     transform: scale(1.05);
 }
+
+.contador-oferta {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ae10ff;
+}
+
+.contador-oferta .expirado {
+    color: #dc3545;
+}
+.contador-oferta {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ae10ff;
+}
+
+.contador-oferta .expirado {
+    color: #dc3545;
+}
+
 </style>
 
 <div class="container ver-delicia">
@@ -213,9 +236,11 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
             <p><strong>Estado:</strong> <?php echo esc_html($estado); ?></p>
             <p><strong>Categoría:</strong> <?php echo esc_html($categoria); ?></p>
 
-            <?php if ($precio_temporal > 0): ?>
+            <?php if ($precio_temporal > 0 && !empty($precio_temporal_hasta)): ?>
                 <p><strong>Precio:</strong> <del>$<?php echo number_format($precio, 2); ?></del></p>
                 <p><strong>Precio oferta:</strong> $<?php echo number_format($precio_temporal, 2); ?></p>
+                <p><strong>Vigencia:</strong> hasta <?php echo date_i18n('d/m/Y', strtotime($precio_temporal_hasta)); ?></p>
+                <div id="contador-<?php echo esc_attr($id); ?>" class="contador-oferta"></div>
             <?php else: ?>
                 <p><strong>Precio:</strong> $<?php echo number_format($precio, 2); ?></p>
             <?php endif; ?>
@@ -242,13 +267,8 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
                 </a>
             <?php endif; ?>
 
-            <a
-                href="<?php echo whatsapp_delicias($nombre ? esc_attr($nombre) : 'nombre del producto', $wa_delicias); ?>"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-whatsapp">
-                por WhatsApp
-            </a>
+            <!-- btn whatsapp -->
+            <?php echo whatsapp_delicias(esc_attr($nombre), $wa_delicias); ?>
         </div>
     </div>
 
@@ -273,5 +293,31 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
     </div>
 
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const contador = document.getElementById("contador-<?php echo esc_attr($id); ?>");
+    const fechaLimite = new Date("<?php echo esc_js($precio_temporal_hasta); ?>T23:59:59").getTime();
+
+    function actualizarContador() {
+        const ahora = new Date().getTime();
+        const diferencia = fechaLimite - ahora;
+
+        if (diferencia <= 0) {
+            contador.innerHTML = "<span class='expirado'>⏰ Oferta expirada</span>";
+            return;
+        }
+
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+        contador.innerHTML = `⏲️ Quedan <strong>${dias}d ${horas}h ${minutos}m ${segundos}s</strong>`;
+    }
+
+    actualizarContador();
+    setInterval(actualizarContador, 1000);
+});
+</script>
 
 <?php get_footer(); ?>

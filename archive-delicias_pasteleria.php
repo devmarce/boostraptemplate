@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template dinámico con tabs por categoría + pestaña "Todos los productos".
  *
@@ -8,10 +7,10 @@
 
 get_header();
 
-// Obtenemos los productos agrupados
+// Obtenemos los productos agrupados desde la función del helper
 $productos_grouped = get_pasteleria_grouped_by_category();
 ?>
-<!-- test @borrar -->
+
 <style type="text/css">
   /* ===== Tabs ===== */
   #tabs .nav-tabs {
@@ -48,7 +47,7 @@ $productos_grouped = get_pasteleria_grouped_by_category();
     border-radius: 8px;
   }
 
-  .zocalo-category .title-categoria {
+  .title-categoria {
     color: #ff00d4 !important;
     font-size: 1.5rem;
     font-weight: 700;
@@ -103,15 +102,6 @@ $productos_grouped = get_pasteleria_grouped_by_category();
     color: #555;
   }
 
-  .card-text small.text-success {
-    font-weight: 600;
-    color: #28a745 !important;
-  }
-
-  .card-text small.text-muted {
-    color: #6c757d !important;
-  }
-
   /* ===== Responsive ===== */
   @media (max-width: 767px) {
     .zocalo-category {
@@ -124,6 +114,7 @@ $productos_grouped = get_pasteleria_grouped_by_category();
     }
   }
 </style>
+
 <div class="container-fluid productos-post-container mt-3">
   <div class="row no-gutters">
     <div class="col-12 text-center">
@@ -131,10 +122,14 @@ $productos_grouped = get_pasteleria_grouped_by_category();
         <div class="content mx-2 mx-sm-4">
           <div class="row">
             <div class="col-12">
+
               <?php if (!empty($productos_grouped)) : ?>
+
+                <!-- NAV TABS -->
                 <nav>
                   <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                    <!-- Pestaña TODOS -->
+
+                    <!-- Pestaña TODOS (oculta pero activa) -->
                     <a class="d-none nav-item nav-link active"
                       id="tab-todos-tab"
                       data-toggle="tab"
@@ -144,9 +139,11 @@ $productos_grouped = get_pasteleria_grouped_by_category();
                       aria-selected="true">
                       Todos
                     </a>
+
                     <!-- Pestañas por categoría -->
                     <?php foreach ($productos_grouped as $categoria => $items) : ?>
                       <?php $tab_id = 'tab-' . sanitize_title($categoria); ?>
+
                       <a class="nav-item nav-link"
                         id="<?php echo esc_attr($tab_id); ?>-tab"
                         data-toggle="tab"
@@ -154,37 +151,51 @@ $productos_grouped = get_pasteleria_grouped_by_category();
                         role="tab"
                         aria-controls="<?php echo esc_attr($tab_id); ?>"
                         aria-selected="false">
-                        <?php echo esc_html($categoria); ?>
+                        <?php echo esc_html(ucfirst($categoria)); ?>
                       </a>
+
                     <?php endforeach; ?>
+
                   </div>
                 </nav>
 
+                <!-- TAB CONTENT -->
                 <div class="tab-content py-3 px-2 px-sm-0" id="nav-tabContent">
-                  <!-- TAB TODOS -->
+
+                  <!-- ============================= -->
+                  <!-- TAB: TODOS LOS PRODUCTOS     -->
+                  <!-- ============================= -->
                   <div class="tab-pane fade show active"
                     id="tab-todos"
                     role="tabpanel"
                     aria-labelledby="tab-todos-tab">
+
                     <?php foreach ($productos_grouped as $categoria => $items) : ?>
-                      <div class="zocalo-category" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/custom/category-back.png');">
+
+                      <div class="zocalo-category"
+                        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/custom/category-back.png');">
                         <div>
-                          <h2 class="title-categoria text-white text-uppercase"><?php echo esc_html($categoria); ?></h2>
+                          <h2 class="title-categoria text-white text-uppercase">
+                            <?php echo esc_html(ucfirst($categoria)); ?>
+                          </h2>
                         </div>
-                        <div><img src="<?php //echo get_template_directory_uri(); 
-                                        ?>/assets/img/custom/category-back.png" alt=""></div>
+                        <div><img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-blanco.png" alt="Logo"></div>
                       </div>
+
                       <div class="row">
                         <?php foreach ($items as $item) : ?>
                           <div class="col-lg-4 col-md-6 col-sm-12 mb-4 px-4">
+
                             <div class="card h-100 producto-wrapper bg-light">
 
-                              <img
-                                class="card-img-top img-fluid"
-                                src="<?php echo !empty($item['imagen']) ? esc_url($item['imagen']) : esc_url(get_template_directory_uri() . '/assets/img/placeholder.png'); ?>"
+                              <!-- Imagen -->
+                              <img class="card-img-top img-fluid"
+                                src="<?php echo esc_url($item['imagen']); ?>"
                                 alt="<?php echo esc_attr($item['nombre']); ?>">
 
+                              <!-- Contenido -->
                               <div class="card-body">
+
                                 <h5 class="card-title"><?php echo esc_html($item['nombre']); ?></h5>
 
                                 <?php if (!empty($item['promo'])) : ?>
@@ -193,9 +204,11 @@ $productos_grouped = get_pasteleria_grouped_by_category();
 
                                 <?php if (!empty($item['precio'])) : ?>
                                   <p class="card-text">
-                                    Precio: $<?php echo esc_html(number_format($item['precio'], 2)); ?>
+                                    Precio: $<?php echo number_format($item['precio'], 2); ?>
                                     <?php if (!empty($item['precio_temporal'])) : ?>
-                                      <br><small class="text-success">Oferta: $<?php echo esc_html(number_format($item['precio_temporal'], 2)); ?></small>
+                                      <br><small class="text-success">
+                                        Oferta: $<?php echo number_format($item['precio_temporal'], 2); ?>
+                                      </small>
                                     <?php endif; ?>
                                   </p>
                                 <?php endif; ?>
@@ -203,59 +216,69 @@ $productos_grouped = get_pasteleria_grouped_by_category();
                                 <?php if (!empty($item['descripcion_corta'])) : ?>
                                   <p class="card-text"><?php echo esc_html($item['descripcion_corta']); ?></p>
                                 <?php endif; ?>
-                                <?php if ($item['modal_form']) : ?>
-                                  <a
-                                    href="<?php echo !empty($item['link_ext']) ? esc_url($item['link_ext']) : '#'; ?>"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="btn btn-primary <?php echo !empty($item['modal_form']) ? 'js-cotizar-delicia' : ''; ?>"
-                                    data-model-id="<?php echo esc_attr($item['id']); ?>"
-                                    data-model-name="<?php echo esc_attr($item['nombre']); ?>"
-                                    data-model-category="<?php echo esc_attr($item['categoria']); ?>">
-                                    Encargar
-                                  </a>
-                                <?php endif; ?>
 
-                                <?php $wa_delicias  = get_field('whatsapp_delicias', 'option'); ?>
-                                <a
-                                  href="<?php echo whatsapp_delicias(esc_attr($item['nombre']) ? esc_attr($item['nombre'])  : 'nombre del producto', $wa_delicias); ?>"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  class="btn btn-whatsapp">
-                                  por WhatsApp
+                                <!-- Botón ver delicia -->
+                                <a href="<?php echo esc_url(add_query_arg('id', $item['id'], home_url('/ver-delicia/'))); ?>"
+                                  class="btn btn-primary mt-1">
+                                  Ver Delicia
                                 </a>
+
+                                <!-- Botón WhatsApp -->
+                                <?php
+                                $wa = get_field('whatsapp_delicias', 'option');
+                                $nombre = !empty($item['nombre']) ? $item['nombre'] : 'producto';
+                                echo whatsapp_delicias($nombre, $wa);
+                                ?>
+
                               </div>
+
                             </div>
                           </div>
                         <?php endforeach; ?>
                       </div>
+
                     <?php endforeach; ?>
+
                   </div>
 
-                  <!-- TABS POR CATEGORÍA -->
+                  <!-- ============================= -->
+                  <!-- TABS POR CATEGORÍA           -->
+                  <!-- ============================= -->
                   <?php foreach ($productos_grouped as $categoria => $items) : ?>
                     <?php $tab_id = 'tab-' . sanitize_title($categoria); ?>
+
                     <div class="tab-pane fade"
                       id="<?php echo esc_attr($tab_id); ?>"
                       role="tabpanel"
                       aria-labelledby="<?php echo esc_attr($tab_id); ?>-tab">
-                      <div class="zocalo-category" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/custom/category-back.png');">
+
+                      <div class="zocalo-category"
+                        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/custom/category-back.png');">
+
                         <div>
-                          <h2 class="title-categoria text-white text-uppercase"><?php echo esc_html($categoria); ?></h2>
+                          <h2 class="title-categoria text-white text-uppercase">
+                            <?php echo esc_html(ucfirst($categoria)); ?>
+                          </h2>
                         </div>
+
                         <div><img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-blanco.png" alt="Logo"></div>
+
                       </div>
+
                       <div class="row">
+
                         <?php foreach ($items as $item) : ?>
                           <div class="col-lg-4 col-md-6 col-sm-12 mb-4 px-4">
+
                             <div class="card h-100 producto-wrapper bg-light">
 
-                              <img
-                                class="card-img-top img-fluid"
-                                src="<?php echo !empty($item['imagen']) ? esc_url($item['imagen']) : esc_url(get_template_directory_uri() . '/assets/img/placeholder.png'); ?>"
+                              <!-- Imagen -->
+                              <img class="card-img-top img-fluid"
+                                src="<?php echo esc_url($item['imagen']); ?>"
                                 alt="<?php echo esc_attr($item['nombre']); ?>">
 
                               <div class="card-body">
+
                                 <h5 class="card-title"><?php echo esc_html($item['nombre']); ?></h5>
 
                                 <?php if (!empty($item['promo'])) : ?>
@@ -264,9 +287,11 @@ $productos_grouped = get_pasteleria_grouped_by_category();
 
                                 <?php if (!empty($item['precio'])) : ?>
                                   <p class="card-text">
-                                    Precio: $<?php echo esc_html(number_format($item['precio'], 2)); ?>
+                                    Precio: $<?php echo number_format($item['precio'], 2); ?>
                                     <?php if (!empty($item['precio_temporal'])) : ?>
-                                      <br><small class="text-success">Oferta: $<?php echo esc_html(number_format($item['precio_temporal'], 2)); ?></small>
+                                      <br><small class="text-success">
+                                        Oferta: $<?php echo number_format($item['precio_temporal'], 2); ?>
+                                      </small>
                                     <?php endif; ?>
                                   </p>
                                 <?php endif; ?>
@@ -274,38 +299,32 @@ $productos_grouped = get_pasteleria_grouped_by_category();
                                 <?php if (!empty($item['descripcion_corta'])) : ?>
                                   <p class="card-text"><?php echo esc_html($item['descripcion_corta']); ?></p>
                                 <?php endif; ?>
-                                <?php if ($item['modal_form']) : ?>
-                                  <a
-                                    href="<?php echo !empty($item['link_ext']) ? esc_url($item['link_ext']) : '#'; ?>"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="btn btn-primary <?php echo !empty($item['modal_form']) ? 'js-cotizar-delicia' : ''; ?>"
-                                    data-model-id="<?php echo esc_attr($item['id']); ?>"
-                                    data-model-name="<?php echo esc_attr($item['nombre']); ?>"
-                                    data-model-category="<?php echo esc_attr($item['categoria']); ?>">
-                                    Encargar
-                                  </a>
-                                <?php endif; ?>
 
-                                <?php $wa_delicias  = get_field('whatsapp_delicias', 'option'); ?>
-                                <a
-                                  href="<?php echo whatsapp_delicias(esc_attr($item['nombre']) ? esc_attr($item['nombre'])  : 'nombre del producto', $wa_delicias); ?>"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  class="btn btn-whatsapp">
-                                  por WhatsApp
-                                </a>
+                                <!-- WhatsApp -->
+                                <?php
+                                $wa = get_field('whatsapp_delicias', 'option');
+                                $nombre = !empty($item['nombre']) ? $item['nombre'] : 'producto';
+                                echo whatsapp_delicias($nombre, $wa);
+                                ?>
+
                               </div>
+
                             </div>
+
                           </div>
                         <?php endforeach; ?>
+
                       </div>
                     </div>
+
                   <?php endforeach; ?>
+
                 </div>
+
               <?php else : ?>
                 <p>No hay productos disponibles en este momento.</p>
               <?php endif; ?>
+
             </div>
           </div>
         </div>

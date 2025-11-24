@@ -203,7 +203,8 @@ function get_pasteleria_grouped_by_category()
                 'galeria'          => $galeria_urls,
                 'video'            => $video,
                 'precio'           => $precio,
-                'precio_temporal'  => $precio_temporal,
+                'precio_temporal'    => get_field('precio_temporal', $id) ?: 0,
+                'precio_temporal_hasta' => get_field('precio_temporal_hasta', $id) ?: '',
                 'descuento'        => $descuento,
                 'estado'           => $estado,
                 'promo'            => $promo,
@@ -253,7 +254,7 @@ function responsive_device($device)
 }
 
 // Enqueue y pasar datos de los modelos al JS (forms-modales)
-add_action('wp_enqueue_scripts', function() {
+add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('form-modelos', get_stylesheet_directory_uri() . '/assets/js/form-modelos.js', ['jquery'], time(), true);
 
     // Obtenemos los modelos
@@ -272,8 +273,9 @@ add_action('wp_enqueue_scripts', function() {
 });
 
 
-// Función para generar URL de WhatsApp con mensaje personalizado
-function whatsapp_delicias($producto, $numero_wa) {
+// Función para generar botón de WhatsApp con mensaje personalizado
+function whatsapp_delicias($producto, $numero_wa, $title_btn = "Consultar")
+{
     // Mensaje base
     $mensaje = "Hola Dulcing, quiero consultar el siguiente producto: " . $producto;
 
@@ -283,5 +285,10 @@ function whatsapp_delicias($producto, $numero_wa) {
     // Armar la URL de WhatsApp
     $url = "https://wa.me/" . $numero_wa . "?text=" . $mensaje_codificado;
 
-    return $url;
+    // Generar el botón con logo
+    $html = '<a href="' . esc_url($url) . '" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">' . $title_btn . '
+                <img src="' . get_stylesheet_directory_uri() . '/assets/img/icons/icon-whatsapp.png" alt="WhatsApp" />
+             </a>';
+
+    return $html;
 }

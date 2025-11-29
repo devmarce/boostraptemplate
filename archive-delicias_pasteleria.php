@@ -131,6 +131,30 @@ $productos_grouped = get_pasteleria_grouped_by_category();
   .contador-oferta .expirado {
     color: #dc3545;
   }
+  /* ===== Precios con clases ===== */
+.precio-real-tachada {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.precio-real-expirada {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+.precio-oferta-activa {
+  text-decoration: none;
+  color: #ae10ff;
+  font-weight: bolder;
+}
+
+.precio-oferta-expirada {
+  text-decoration: line-through;
+  color: red;
+  font-weight: 700;
+}
+
 
   /* ===== Responsive ===== */
   @media (max-width: 767px) {
@@ -332,11 +356,13 @@ $productos_grouped = get_pasteleria_grouped_by_category();
 
                                 <h5 class="card-title"><?php echo esc_html($item['nombre']); ?></h5>
 
-                                <?php if (!empty($item['promo'])) : ?>
-                                  <span class="badge badge-warning"><?php echo esc_html($item['promo']); ?></span>
+                                <?php if (!empty($item['tag_promo'])) : ?>
+                                  <span class="badge badge-warning"><?php echo esc_html($item['tag_promo']); ?></span>
                                 <?php endif; ?>
 
                                 <!-- Precios -->
+                                <div class="delicia-detalles">
+
                                   <?php if ($precio_temporal > 0 && !empty($precio_temporal_hasta)) : ?>
 
                                     <p><strong>Precio:</strong>
@@ -362,18 +388,22 @@ $productos_grouped = get_pasteleria_grouped_by_category();
 
                                   <?php endif; ?>
 
-                                <?php if (!empty($item['descripcion_corta'])) : ?>
-                                  <p class="card-text"><?php echo esc_html($item['descripcion_corta']); ?></p>
-                                <?php endif; ?>
+                                  <!-- Descripción -->
+                                  <?php if (!empty($item['descripcion_corta'])) : ?>
+                                    <p class="card-text"><?php echo esc_html($item['descripcion_corta']); ?></p>
+                                  <?php endif; ?>
 
-                                <!-- Botón ver delicia -->
-                                <a href="<?php echo esc_url(add_query_arg('id', $item['id'], home_url('/ver-delicia/'))); ?>"
-                                  class="btn btn-primary mt-1">Ver Delicia</a>
+                                  <!-- Botón ver delicia -->
+                                  <a href="<?php echo esc_url(add_query_arg('id', $item['id'], home_url('/ver-delicia/'))); ?>"
+                                    class="btn btn-primary mt-1">Ver Delicia</a>
 
-                                <?php
-                                $wa = get_field('whatsapp_delicias', 'option');
-                                echo whatsapp_delicias($item['nombre'], $wa);
-                                ?>
+                                  <!-- WhatsApp -->
+                                  <?php
+                                  $wa = get_field('whatsapp_delicias', 'option');
+                                  echo whatsapp_delicias($item['nombre'], $wa);
+                                  ?>
+
+                                </div>
 
                               </div>
                             </div>
@@ -404,12 +434,15 @@ $productos_grouped = get_pasteleria_grouped_by_category();
 <!-- ======================= -->
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  function iniciarContadores() {
 
     document.querySelectorAll(".contador-oferta").forEach(function(contador) {
 
-      const precioReal = contador.closest(".delicia-detalles").querySelector("del.precio-real");
-      const precioOferta = contador.closest(".delicia-detalles").querySelector(".precio-oferta");
+      const wrapper = contador.closest(".delicia-detalles");
+      if (!wrapper) return;
+
+      const precioReal = wrapper.querySelector("del.precio-real");
+      const precioOferta = wrapper.querySelector(".precio-oferta");
 
       const fechaLimite = new Date(contador.dataset.fecha + "T23:59:59").getTime();
 
@@ -418,33 +451,37 @@ $productos_grouped = get_pasteleria_grouped_by_category();
         const diff = fechaLimite - ahora;
 
         /* ============================================
-          SI LA OFERTA EXPIRÓ
+          OFERTA EXPIRADA
         ============================================ */
         if (diff <= 0) {
 
-          // Mostrar texto de expirado
           contador.innerHTML = "<span class='expirado'>⏰ Oferta expirada</span>";
 
-          // Restablecer precio REAL sin tachar
-          if (precioReal) precioReal.style.textDecoration = "none";
+          if (precioReal) {
+            precioReal.classList.remove("precio-real-tachada");
+            precioReal.classList.add("precio-real-expirada");
+          }
 
-          // Ocultar el precio oferta
-          if (precioOferta) precioOferta.style.textDecoration = "line-through";
-          if (precioOferta) precioOferta.style.color = "red";
+          if (precioOferta) {
+            precioOferta.classList.remove("precio-oferta-activa");
+            precioOferta.classList.add("precio-oferta-expirada");
+          }
 
           return;
         }
 
         /* ============================================
-          SI LA OFERTA SIGUE VIGENTE
+          OFERTA VIGENTE
         ============================================ */
-        // Precio real tachado
-        if (precioReal) precioReal.style.textDecoration = "line-through";
+        if (precioReal) {
+          precioReal.classList.add("precio-real-tachada");
+          precioReal.classList.remove("precio-real-expirada");
+        }
 
-        // Precio oferta normal (sin tachar)
-        if (precioOferta) precioOferta.style.textDecoration = "none";
-        if (precioOferta) precioOferta.style.color = "#ae10ff";
-        if (precioOferta) precioOferta.style.fontWeight = "bolder";
+        if (precioOferta) {
+          precioOferta.classList.add("precio-oferta-activa");
+          precioOferta.classList.remove("precio-oferta-expirada");
+        }
 
         // Calcular tiempo restante
         const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -452,13 +489,23 @@ $productos_grouped = get_pasteleria_grouped_by_category();
         const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const segundos = Math.floor((diff % (1000 * 60)) / 1000);
 
-        contador.innerHTML = `❤️‍🔥 Quedan <strong>${dias}d ${horas}h ${minutos}m ${segundos}s</strong>`;
+        contador.innerHTML = 
+          `❤️‍🔥 Quedan <strong>${dias}d ${horas}h ${minutos}m ${segundos}s</strong>`;
       }
 
       actualizar();
       setInterval(actualizar, 1000);
     });
+  }
+
+  /* Ejecutar al cargar la página */
+  document.addEventListener("DOMContentLoaded", iniciarContadores);
+
+  /* Ejecutar cada vez que se activa un TAB */
+  document.addEventListener("shown.bs.tab", function() {
+    iniciarContadores();
   });
 </script>
+
 
 <?php get_footer(); ?>

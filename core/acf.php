@@ -37,3 +37,4 @@ include_once( get_stylesheet_directory() . '/vendor/acf/acf.php' );
 include_once( get_stylesheet_directory() . '/core/acf/options-homepage.php' );
 include_once( get_stylesheet_directory() . '/core/acf/options-settings.php' );// configuracion
 include_once( get_stylesheet_directory() . '/core/acf/options-productos.php' );// campos de los productos de pasteleria
+include_once( get_stylesheet_directory() . '/core/acf/options-entradas.php' );// campos de los productos de pasteleria

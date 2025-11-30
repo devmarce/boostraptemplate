@@ -22,6 +22,10 @@ if (!is_scalar($container_class) || empty($container_class)) {
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
     <!--WordPress head-->
     <?php wp_head(); ?>
     <!--end WordPress head-->

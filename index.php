@@ -16,7 +16,8 @@ get_header();
 
 <?php
 
-include(get_template_directory() . "/template-parts/parts-homepage/homepage-slider.php");
+include(get_template_directory() . "/template-parts/parts-homepage/homepage-carrusel-productos.php");
+//include(get_template_directory() . "/template-parts/parts-homepage/homepage-slider.php");
 
 
 get_footer();

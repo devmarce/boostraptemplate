@@ -4,7 +4,7 @@ Theme URI: https://Marcelo.com
 Author: Marcelo MAM
 Author URI: https://github.com/devmarce/boostraptemplate
 Description: Bootstrap v.4 basic theme for developers to build their new theme very fast and easy. (WordPress 5 or Gutenberg ready.) The concept is to keep it basic, no rich features, no additional functions; all of these for theme developers will be easier to start develop their theme. Please read notice on Bootstrap Basic 4 Help page in Dashboard &gt; Appearance &gt; Bootstrap Basic4 Help.
-Version: 1.2.8
+Version: 1.3.4
 Requires PHP: 5.5
 Requires at least: 5.0
 Tested up to: 6.9
@@ -23,6 +23,30 @@ This theme built with Twitter Bootstrap v.4. It is basic theme with basic style 
 Required WordPress CSS
 */
 
+/* Registro de fuentes TTF */
+@font-face {
+  font-family: "Ephesis";
+  src: url("assets/fonts/Ephesis-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Federo";
+  src: url("assets/fonts/Federo-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ShadowsIntoLight";
+  src: url("assets/fonts/ShadowsIntoLight-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
 /* ==============================
    Variables principales del theme
    ============================== */
@@ -37,8 +61,11 @@ Required WordPress CSS
   --color-whithe: #ffffff;
   --color-black: #000;
 
+  
   /* Tipografía */
-  --font-base: 'Helvetica Neue', Arial, sans-serif;
+  --font-dulcing: "Ephesis", cursive;
+  --font-serius: "Federo", sans-serif;
+  --font-informal: "ShadowsIntoLight", cursive;
   --font-heading: 'Montserrat', sans-serif;
   --font-size-base: 1rem;
   --font-size-sm: 14px;
@@ -62,9 +89,22 @@ Required WordPress CSS
   --z-tooltip: 1100;
 }
 
+/* Clases para funetes */
+.f-dulcing {
+  font-family: var(--font-dulcing);
+}
+
+.f-serius {
+  font-family: var(--font-serius);
+}
+
+.f-informal {
+  font-family: var(--font-informal);
+}
+
 
 body {
-  font-family: var(--font-base);
+  font-family: var(--font-serius);
   font-size: var(--font-size-base);
   color: var(--color-whithe);
   background-color: var(--color-background);

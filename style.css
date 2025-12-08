@@ -51,10 +51,11 @@ Required WordPress CSS
    Variables principales del theme
    ============================== */
 :root {
-  /* Colores */
+  /* Colores base */
   --color-primary: #e7a6c7 !important;
-  /* azul corporativo */
   --color-secondary: rgb(65 0 149) !important;
+  --color-manga: rgb(250 7 166) !important;
+  
   /* amarillo destacado */
   --color-accent: #e74c3c;
   /* rojo para alertas */

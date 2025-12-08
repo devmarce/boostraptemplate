@@ -120,13 +120,13 @@ $novedades = get_posts($args);
   width: 8px;
   height: 8px;
   border-radius: 99px;
-  background: #002458;
+  background: #410095;
   transition: all 0.3s ease-out;
   opacity: 0.7;
 }
 
 .slider-pagination__item.active {
-  background: #ffd01e;
+  background: #fa13aa;
   width: 30px;
   opacity: 1;
 }
@@ -199,7 +199,7 @@ $novedades = get_posts($args);
   gap: 4px;
   font-weight: 500;
   font-size: 18px;
-  color: var(--color-primary);
+  color: var(--color-manga);
   text-decoration: none;
   justify-content: center;
 }
@@ -261,6 +261,9 @@ $novedades = get_posts($args);
   margin-block: 3rem;
   text-align: center;
 }
+.title-last-events h2 {
+  font-size: 2.5rem;
+}
 
 /* END: Últimos Eventos homepage */
 </style>
@@ -284,7 +287,7 @@ $novedades = get_posts($args);
         </div>
 
         <!-- Slider Content -->
-        <div class="title-last-events">
+        <div class="title-last-events f-dulcing">
           <h2>Mis Delicias</h2>
         </div>
         <div class="emotions-slider__slider swiper">
@@ -300,7 +303,7 @@ $novedades = get_posts($args);
                     <div class="emotions-slider-item__footer">
                       <a class="emotions-slider-item__btn"
                         href="<?php echo esc_url(get_permalink($novedad->ID)); ?>" target="_blank">
-                        <span class="emotions-slider-item__btn-text">
+                        <span class="emotions-slider-item__btn-text f-informal">
                           <?php echo esc_html($novedad->post_title); ?>
                         </span>
                       </a>

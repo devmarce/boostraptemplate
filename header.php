@@ -97,7 +97,7 @@ if (!is_scalar($container_class) || empty($container_class)) {
                             'theme_location' => 'primary',
                             'depth'          => 2,
                             'container'      => false,
-                            'menu_class'     => 'navbar-nav',
+                            'menu_class'     => 'navbar-nav f-serius',
                             'walker'         => new \BootstrapBasic4\BootstrapBasic4WalkerNavMenu(),
                         ]);
                         ?>

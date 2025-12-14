@@ -103,6 +103,10 @@ Required WordPress CSS
   font-family: var(--font-informal);
 }
 
+.color-primary {
+  color: var(--color-manga) !important;
+}
+
 
 body {
   font-family: var(--font-serius);
@@ -160,7 +164,19 @@ body {
   background: var(--color-primary) !important;
   color: var(--color-secondary) !important;
   cursor: pointer;
+}
 
+/* btn Solicitar Pal */
+.btn-primary {
+  background: var(--color-manga) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary) !important;
+  color: var(--color-secondary) !important;
+  cursor: pointer;
 }
 
 /* btn Solicitar Azul */

@@ -15,7 +15,7 @@ get_header(); ?>
             <div class="col-md-12">
 
                 <!-- Card del producto -->
-                <div class="card shadow-sm mb-4" style="border: none;">
+                <div class="card mb-4" style="border: none;">
                     
                     <?php if (get_field('imagen_producto')): ?>
                         <img src="<?php the_field('imagen_producto'); ?>" 
@@ -27,13 +27,13 @@ get_header(); ?>
 
                     <div class="card-body">
                         <!-- Título -->
-                        <h2 class="card-title text-primary">
+                        <h2 class="card-title f-informal color-primary">
                             <?php the_field('titulo_producto'); ?>
                         </h2>
 
                         <!-- Descripción corta -->
                         <?php if (get_field('descripcion_corta')): ?>
-                            <p class="card-text text-muted">
+                            <p class="card-text f-serius">
                                 <?php the_field('descripcion_corta'); ?>
                             </p>
                         <?php endif; ?>
@@ -45,7 +45,7 @@ get_header(); ?>
 
                         <!-- Descripción larga -->
                         <?php if (get_field('descripcion_larga')): ?>
-                            <div class="mt-3">
+                            <div class="mt-3 f-serius">
                                 <?php the_field('descripcion_larga'); ?>
                             </div>
                         <?php endif; ?>
@@ -60,11 +60,31 @@ get_header(); ?>
                         <?php endif; ?>
 
                         <!-- Botón de pedido -->
-                        <?php if (get_field('url_pedido_producto')): ?>
-                            <a href="<?php the_field('url_pedido_producto'); ?>" 
-                               class="btn btn-lg btn-primary js-cotizar-delicia mt-3" target="_blank" rel="noopener">
-                                🛒 Solicitar pedido
+                        <?php 
+                        // 1. Obtener el campo 'link' completo (devuelve un array)
+                        $link = get_field('link_ref_producto'); 
+
+                        // 2. Verificar que el enlace exista y contenga datos
+                        if( $link ): 
+                            
+                            // 3. Extraer los componentes del array de enlace:
+                            $link_url    = isset($link['url']) ? esc_url( $link['url'] ) : '';
+                            $link_title  = isset($link['title']) ? esc_html( $link['title'] ) : 'Enlace';
+                            $link_target = isset($link['target']) ? esc_attr( $link['target'] ) : '_self';
+                            
+                            // Configurar el atributo rel="noopener" si el target es '_blank'
+                            $rel_attr    = ($link_target === '_blank') ? 'rel="noopener"' : '';
+                            ?>
+
+                            <a href="<?php echo $link_url; ?>" 
+                            class="btn btn-lg btn-primary mt-3" 
+                            target="<?php echo $link_target; ?>" 
+                            <?php echo $rel_attr; ?>>
+                                
+                                <?php echo $link_title; ?> 
+                                
                             </a>
+
                         <?php endif; ?>
                     </div>
                 </div>

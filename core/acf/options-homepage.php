@@ -85,6 +85,79 @@ if (function_exists('acf_add_local_field_group')):
     ));
 endif;
 
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+if (function_exists('acf_add_local_field_group')):
+    // Grupo de campos: Formas de pago y consultas
+    acf_add_local_field_group(array(
+        'key' => 'group_675f0a9c8ed139f99c9c2',
+        'title' => 'Formas de Pago y Consultas',
+        'fields' => array(
+            array(
+                'key' => 'field_675f0a9c0bf5c92',
+                'label' => 'Bloques de información',
+                'name' => 'formas_pago_consulta',
+                'type' => 'repeater',
+                'required' => 0,
+                'button_label' => 'Añadir Bloque',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_675f0a9c_icono',
+                        'label' => 'Icono',
+                        'name' => 'icono',
+                        'type' => 'text',
+                        'instructions' => 'Puedes usar un emoji (💳, 📞, $) o un código SVG.',
+                        'required' => 0,
+                    ),
+                    array(
+                        'key' => 'field_675f0a9c_titulo',
+                        'label' => 'Título',
+                        'name' => 'titulo',
+                        'type' => 'text',
+                        'required' => 1,
+                    ),
+                    array(
+                        'key' => 'field_675f0a9c_descripcion',
+                        'label' => 'Descripción',
+                        'name' => 'descripcion',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'required' => 0,
+                    ),
+                    array(
+                        'key' => 'field_675f0a9c_resaltado',
+                        'label' => 'Texto destacado',
+                        'name' => 'resaltado',
+                        'type' => 'text',
+                        'instructions' => 'Ejemplo: "Pedidos con dos días de anticipación".',
+                        'required' => 0,
+                    ),
+                ),
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'options_page',
+                    'operator' => '==',
+                    'value' => 'acf-options-pagina-de-inicio',
+                ),
+            ),
+        ),
+        'menu_order' => 1,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'active' => 1,
+        'description' => 'Configura los bloques de pago y consulta que aparecen en la página de inicio.',
+    ));
+endif;
+
+
 /*
 if (function_exists('acf_add_local_field_group')):
     // Cards Services

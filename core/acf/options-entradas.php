@@ -61,16 +61,14 @@ acf_add_local_field_group(array(
             'instructions' => 'Ej: 10',
             'required' => 0,
         ),
-
         array(
             'key' => 'field_url_pedido_producto',
-            'label' => 'URL para pedido',
-            'name' => 'url_pedido_producto',
-            'type' => 'url',
-            'instructions' => 'Enlace para encargar producto (WhatsApp, formulario, tienda, etc)',
+            'label' => 'Botón de Referencia/Pedido',
+            'name' => 'link_ref_producto', // Cambiado el 'name' para reflejar que ahora es un enlace (opcional)
+            'type' => 'link', // ⬅️ ¡Este es el cambio clave!
+            'instructions' => 'Define el texto del botón, la URL (WhatsApp, formulario, tienda, etc.) y si se abre en una nueva pestaña.',
             'required' => 0,
         ),
-
     ),
     'location' => array(
         array(

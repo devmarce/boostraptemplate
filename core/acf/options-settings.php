@@ -3,6 +3,44 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
+if( function_exists('acf_add_local_field_group') ):
+
+acf_add_local_field_group(array(
+    'key' => 'group_og_image',
+    'title' => 'Configuración OG',
+    'fields' => array(
+        array(
+            'key' => 'field_og_image',
+            'label' => 'Imagen OG',
+            'name' => 'og_image',
+            'type' => 'image',
+            'instructions' => 'Selecciona la imagen que se usará en las etiquetas Open Graph (og:image).',
+            'required' => 0,
+            'return_format' => 'array', // devuelve array con url, id, etc.
+            'preview_size' => 'medium',
+            'library' => 'all',
+        ),
+    ),
+    'location' => array(
+        array(
+            array(
+                'param' => 'options_page',
+                'operator' => '==',
+                'value' => 'acf-options-configuracion',
+            ),
+        ),
+    ),
+    'menu_order' => 0,
+    'position' => 'normal',
+    'style' => 'default',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => '',
+));
+
+endif;
+
+
 if (function_exists('acf_add_local_field_group')):
     // Campos ACF de Sucursales y WhatsApp del header
     acf_add_local_field_group(array(

@@ -32,7 +32,7 @@ include(get_template_directory() . "/template-parts/parts-homepage/homepage-carr
       ?>
       <div class="col-md-6 col-lg-4 mb-3">
         <article class="border rounded p-3 d-grid" role="group" aria-labelledby="<?php echo esc_attr($slug); ?>" style="height: 100%;">
-          <div class="d-inline-flex align-items-center justify-content-center bg-info border border-info text-info rounded" style="width:48px;height:48px;font-size:1.35rem;">
+          <div class="d-inline-flex align-items-center justify-content-center rounded" style="width:48px;height:48px;font-size:1.35rem;">
             <?php echo esc_html($icono); ?>
           </div>
           <h3 id="<?php echo esc_attr($slug); ?>" class="h6 text-uppercase mt-2 mb-1">
@@ -50,6 +50,32 @@ include(get_template_directory() . "/template-parts/parts-homepage/homepage-carr
     <?php endif; ?>
   </div>
 </section>
+
+
+  <!-- Banner -->
+  <div class="jumbotron jumbotron-fluid text-center bg-primary text-white mb-0">
+    <div class="container">
+      <h1 class="display-4 f-dulcing">Catering para Eventos Especiales</h1>
+      <p class="lead f-serius">Este es un banner con Bootstrap 4, ideal para destacar contenido.</p>
+      <a href="#servicios" class="btn btn-light btn-lg">Ver más</a>
+    </div>
+  </div>
+
+  <?php $img_envios = get_template_directory_uri() . '/assets/img/marca/envios.jpg'; ?>
+  <style>
+  .banner {
+    background: url('<?php echo $img_envios; ?>') center center/cover no-repeat;
+    color: white;
+    padding: 120px 20px;
+  }
+</style>
+
+<div class="banner text-center">
+  <h1 class="display-4">Tu Banner con Imagen</h1>
+  <p class="lead">Texto destacado sobre la imagen.</p>
+  <a href="#contacto" class="btn btn-primary btn-lg">Contáctanos</a>
+</div>
+
 
 <?php
 get_footer();

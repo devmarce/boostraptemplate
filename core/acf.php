@@ -34,6 +34,7 @@ add_filter('acf/settings/show_admin', '__return_false');
  * Registro de los grupos de campos ACF
  */
 include_once( get_stylesheet_directory() . '/vendor/acf/acf.php' );
+include_once( get_stylesheet_directory() . '/core/acf/options-contacto.php' );
 include_once( get_stylesheet_directory() . '/core/acf/options-homepage.php' );
 include_once( get_stylesheet_directory() . '/core/acf/options-settings.php' );// configuracion
 include_once( get_stylesheet_directory() . '/core/acf/options-productos.php' );// campos de los productos de pasteleria

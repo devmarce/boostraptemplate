@@ -7,6 +7,8 @@
 
 get_header();
 
+//https://www.w3schools.com/css/tryit.asp?filename=trycss_image_modal_js
+
 // Si no hay ID, avisamos
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 $id = $id ?: 0;

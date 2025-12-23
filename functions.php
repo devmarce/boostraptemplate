@@ -278,17 +278,42 @@ function whatsapp_delicias($producto, $numero_wa, $title_btn = "Consultar")
 {
     // Mensaje base
     $mensaje = "Hola Dulcing, quiero consultar el siguiente producto: " . $producto;
-
     // Codificar el mensaje para URL
     $mensaje_codificado = urlencode($mensaje);
-
     // Armar la URL de WhatsApp
     $url = "https://wa.me/" . $numero_wa . "?text=" . $mensaje_codificado;
-
     // Generar el botón con logo
     $html = '<a href="' . esc_url($url) . '" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">' . $title_btn . '
                 <img src="' . get_stylesheet_directory_uri() . '/assets/img/icons/icon-whatsapp.png" alt="WhatsApp" />
              </a>';
 
     return $html;
+}
+
+
+/**
+ * Genera un botón de WhatsApp con enlace directo.
+ *
+ * @param string $tel       Número de teléfono (se limpian caracteres no numéricos).
+ * @param string $tit_btn   Texto del botón (por defecto "Enviar Mensaje").
+ * @param string $mensaje   Mensaje inicial en WhatsApp (por defecto un saludo).
+ *
+ * @return void             Imprime el HTML del botón.
+ */
+function whatsapp_btn($tel, $mensaje, $tit_btn = "Enviar Mensaje") {
+    $htmlwa = '';
+
+    if ($mensaje == '') {
+        $mensaje = "Hola Dulcing, quiero solicitar una de sus delicias...";
+    }
+    
+    if ($tel){
+        $wa_url = "https://wa.me/" . preg_replace('/\D/', '', $tel) . "?text=" . urlencode($mensaje);
+
+        $htmlwa .= '<a href="' . esc_url($wa_url) . '" target="_blank" class="btn btn-whatsapp f-serius">';
+        $htmlwa .= '<i class="fab fa-whatsapp"></i> '. $tit_btn;
+        $htmlwa .= '</a>';
+    }
+
+    echo $htmlwa;
 }

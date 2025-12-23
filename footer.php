@@ -150,7 +150,7 @@
 
     <!-- barra black legales -->
     <div class="bg-black text-center">
-        <p class="mt-3 mb-3 p-0">&copy; <?php echo date('Y'); ?> Dulcing Delicias Pastelería. Todos los derechos reservados.</p>
+        <p class="mt-3 mb-0 p-0">&copy; <?php echo date('Y'); ?> Dulcing Delicias Pastelería. Todos los derechos reservados.</p>
     </div>
     <div class="text-center">
         <p class="mt-0 mb-0 p-1 <?php echo responsive_device('desktop'); ?>" style="font-size: 0.8rem; background-color:#000; color:#fff;">

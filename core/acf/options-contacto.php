@@ -84,6 +84,27 @@ if (function_exists('acf_add_local_field_group')):
                     ),
                 ),
             ),
+            // WhatsApp Contacto
+            array(
+                'key' => 'field_whatsapp_titulo',
+                'label' => 'Título WhatsApp',
+                'name' => 'whatsapp_titulo',
+                'type' => 'text',
+            ),
+            array(
+                'key' => 'field_whatsapp_numero',
+                'label' => 'Número WhatsApp',
+                'name' => 'whatsapp_numero',
+                'type' => 'text',
+                'instructions' => 'Ingresar número con código de país, ej: 5491123456789',
+            ),
+            array(
+                'key' => 'field_whatsapp_mensaje',
+                'label' => 'Mensaje WhatsApp',
+                'name' => 'whatsapp_mensaje',
+                'type' => 'textarea',
+                'instructions' => 'Este mensaje se enviará automáticamente al abrir WhatsApp.',
+            ),
         ),
         'location' => array(
             array(

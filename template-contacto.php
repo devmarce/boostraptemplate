@@ -6,8 +6,10 @@ get_header(); ?>
 
 <!-- Banner -->
 <section class="container-fluid p-0">
-  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/banner-contacto.jpg" 
-       class="img-fluid w-100" alt="Pastelería Contacto">
+  <?php if ($banner = get_field('banner_contacto')): ?>
+    <img src="<?php echo esc_url($banner); ?>"
+      class="img-fluid w-100" alt="Pastelería Contacto">
+  <?php endif; ?>
 </section>
 
 <!-- Card central: Formas de pago -->
@@ -15,71 +17,87 @@ get_header(); ?>
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card text-center shadow">
-        <div class="card-header bg-danger text-white">
-          <h4>Formas de Pago</h4>
+        <div class="card-header olograma bg-black">
+          <h4 class="f-serius reflejo mb-3"><?php the_field('pago_titulo'); ?></h4>
         </div>
-        <div class="card-body">
-          <p>Aceptamos efectivo, tarjetas de crédito/débito y transferencias bancarias.</p>
-          <p>También podés pagar con apps como MercadoPago.</p>
+        <div class="card-body bg-manga">
+          <p style="color: white;"><?php the_field('pago_texto'); ?></p>
         </div>
       </div>
     </div>
   </div>
 </section>
+<?php include(get_template_directory() . "/template-parts/parts-homepage/homepage-cards-formas-pago.php"); ?>
 
 <!-- Formulario de contacto -->
 <section class="container my-5">
-  <h2 class="text-center mb-4">Contactanos</h2>
+  <h2 class="text-center mb-4 f-dulcing">Contactanos</h2>
   <?php
-    // Aquí podés insertar un shortcode de Contact Form 7 o WPForms
-    echo do_shortcode('[contact-form-7 id="123" title="Formulario de contacto"]');
+  $form_shortcode = get_field('form_shortcode');
+  if ($form_shortcode) {
+    echo do_shortcode($form_shortcode);
+  }
   ?>
 </section>
 
 <!-- Sección pedidos -->
 <section class="container my-5">
-  <h2 class="text-center mb-4">Pedidos y Entregas</h2>
-  <div class="row">
+  <h2 class="text-center mb-4 f-dulcing">Pedidos y Entregas</h2>
+  <div class="row my-5">
     <div class="col-md-6">
-      <h5>⏰ Tiempos</h5>
-      <p>Los pedidos deben realizarse con al menos 48 horas de anticipación.</p>
+      <h5 class="f-serius"><?php the_field('pedidos_titulo'); ?></h5>
+      <p><?php the_field('pedidos_texto'); ?></p>
     </div>
     <div class="col-md-6">
-      <h5>🚚 Entregas</h5>
-      <p>Realizamos entregas a domicilio en toda la ciudad. También podés retirar en nuestro local.</p>
+      <h5 class="f-serius"><?php the_field('entregas_titulo'); ?></h5>
+      <p><?php the_field('entregas_texto'); ?></p>
     </div>
   </div>
 </section>
+<!-- test @borrar -->
+<style type="text/css">
+.hover-custom {
+  transition: all 0.6s ease-in-out;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
 
+.hover-custom:hover {
+  transform: scale(1.04) translateY(-6px);
+  box-shadow: 0 18px 35px rgb(247 11 174 / 20%);
+}
+
+</style>
 <!-- Sección encargos especiales -->
 <section class="container my-5">
-  <h2 class="text-center mb-4">Encargos Especiales</h2>
+  <h2 class="text-center mb-4 py-2 f-dulcing">Encargos Especiales</h2>
   <div class="row">
-    <div class="col-md-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Eventos</h5>
-          <p class="card-text">Pastelería personalizada para cumpleaños, aniversarios y celebraciones.</p>
+    <?php if (have_rows('encargos')): ?>
+      <?php while (have_rows('encargos')): the_row(); ?>
+        <div class="col-md-4">
+          <div class="card mb-4 hover-custom">
+            <div class="card-body border-manga">
+              <h5 class="card-title f-dulcing fw-bolder"><?php the_sub_field('encargo_titulo'); ?></h5>
+              <p class="card-text f-serius"><?php the_sub_field('encargo_texto'); ?></p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Catering</h5>
-          <p class="card-text">Opciones dulces y saladas para reuniones y fiestas.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Empresas</h5>
-          <p class="card-text">Mesas dulces y regalos corporativos para tus clientes y empleados.</p>
-        </div>
-      </div>
-    </div>
+      <?php endwhile; ?>
+    <?php endif; ?>
   </div>
+</section>
+
+<!-- Sección WhatsApp -->
+<section class="container my-5 text-center">
+  <?php
+  $wa_titulo  = get_field('whatsapp_titulo');
+  $wa_numero  = get_field('whatsapp_numero');
+  $wa_mensaje = get_field('whatsapp_mensaje');
+  ?>
+
+  <?php if ($wa_numero): ?>
+    <h2 class="mb-4 f-dulcing"><?php echo esc_html($wa_titulo); ?></h2>
+    <?php whatsapp_btn($wa_numero, $wa_mensaje) ?>
+  <?php endif; ?>
 </section>
 
 <?php get_footer(); ?>

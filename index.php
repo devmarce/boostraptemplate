@@ -17,6 +17,7 @@ get_header();
 <?php
 
 include(get_template_directory() . "/template-parts/parts-homepage/homepage-carrusel-productos.php");
+
 //include(get_template_directory() . "/template-parts/parts-homepage/homepage-slider.php");?>
 
 <?php include(get_template_directory() . "/template-parts/parts-homepage/homepage-cards-formas-pago.php"); ?>
@@ -35,20 +36,7 @@ include(get_template_directory() . "/template-parts/parts-homepage/homepage-carr
     </div>
   </div>
 
-  <?php $img_envios = get_template_directory_uri() . '/assets/img/marca/envios.jpg'; ?>
-  <style>
-  .banner {
-    background: url('<?php echo $img_envios; ?>') center center/cover no-repeat;
-    color: white;
-    padding: 120px 20px;
-  }
-</style>
-
-<div class="banner text-center">
-  <h1 class="display-4">Tu Banner con Imagen</h1>
-  <p class="lead">Texto destacado sobre la imagen.</p>
-  <a href="#contacto" class="btn btn-primary btn-lg">Contáctanos</a>
-</div>
+<?php include(get_template_directory() . "/template-parts/parts-homepage/homepage-banner-destacado.php"); ?>
 
 
 <?php

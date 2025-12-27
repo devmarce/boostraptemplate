@@ -14,10 +14,10 @@
           <div class="d-inline-flex align-items-center justify-content-center rounded" style="width:48px;height:48px;font-size:1.35rem;">
             <?php echo esc_html($icono); ?>
           </div>
-          <h3 id="<?php echo esc_attr($slug); ?>" class="h6 text-uppercase mt-2 mb-1">
+          <h3 id="<?php echo esc_attr($slug); ?>" class="h6 text-uppercase mt-2 mb-1 f-serius">
             <?php echo esc_html($titulo); ?>
           </h3>
-          <p class="mb-0 text-muted">
+          <p class="mb-0 text-muted f-normal">
             <?php echo esc_html($descripcion); ?>
             <?php if ($resaltado): ?>
               <strong class="text-dark"><?php echo esc_html($resaltado); ?></strong>

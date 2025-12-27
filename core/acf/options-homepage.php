@@ -147,7 +147,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
             ),
         ),
-        'menu_order' => 1,
+        'menu_order' => 2,
         'position' => 'normal',
         'style' => 'default',
         'label_placement' => 'top',
@@ -156,6 +156,76 @@ if (function_exists('acf_add_local_field_group')):
         'description' => 'Configura los bloques de pago y consulta que aparecen en la página de inicio.',
     ));
 endif;
+
+if (function_exists('acf_add_local_field_group')):
+
+    acf_add_local_field_group(array(
+        'key' => 'field_675f0a9c0bf5x23',
+        'title' => 'Data Banner Destacado',
+        'fields' => array(
+            array(
+                'key' => 'field_banner_titulo',
+                'label' => 'Título del Banner',
+                'name' => 'banner_titulo',
+                'type' => 'text',
+                'instructions' => 'Texto principal del banner (h1).',
+                'required' => 1,
+            ),
+            array(
+                'key' => 'field_banner_texto',
+                'label' => 'Texto destacado',
+                'name' => 'banner_texto',
+                'type' => 'textarea',
+                'instructions' => 'Texto secundario o destacado debajo del título.',
+                'rows' => 2,
+            ),
+            array(
+                'key' => 'field_banner_boton_texto',
+                'label' => 'Texto del botón',
+                'name' => 'banner_boton_texto',
+                'type' => 'text',
+                'instructions' => 'Texto que aparece en el botón.',
+                'default_value' => 'Contáctanos',
+            ),
+            array(
+                'key' => 'field_banner_boton_url',
+                'label' => 'URL del botón',
+                'name' => 'banner_boton_url',
+                'type' => 'url',
+                'instructions' => 'Enlace al que apunta el botón.',
+                'default_value' => '#contacto',
+            ),
+            array(
+                'key' => 'field_banner_imagen',
+                'label' => 'Imagen de fondo',
+                'name' => 'banner_imagen',
+                'type' => 'image',
+                'instructions' => 'Imagen de fondo del banner.',
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'options_page',
+                    'operator' => '==',
+                    'value' => 'acf-options-pagina-de-inicio',
+                ),
+            ),
+        ),
+        'menu_order' => 3,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'active' => 1,
+        'description' => 'Configura el banner destacado de la página de inicio.',
+    ));
+
+endif;
+
 
 
 /*

@@ -4,7 +4,7 @@ Theme URI: https://Marcelo.com
 Author: Marcelo MAM
 Author URI: https://github.com/devmarce/boostraptemplate
 Description: Bootstrap v.4 basic theme for developers to build their new theme very fast and easy. (WordPress 5 or Gutenberg ready.) The concept is to keep it basic, no rich features, no additional functions; all of these for theme developers will be easier to start develop their theme. Please read notice on Bootstrap Basic 4 Help page in Dashboard &gt; Appearance &gt; Bootstrap Basic4 Help.
-Version: 1.4.0
+Version: 1.4.1
 Requires PHP: 5.5
 Requires at least: 5.0
 Tested up to: 6.9
@@ -45,6 +45,15 @@ Required WordPress CSS
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Marcellus";
+  src: url("assets/fonts/Marcellus-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*Marcellus-Regular.ttf*/
+
 
 
 /* ==============================
@@ -66,6 +75,7 @@ Required WordPress CSS
   /* Tipografía */
   --font-dulcing: "Ephesis", cursive;
   --font-serius: "Federo", sans-serif;
+  --font-normal: "Marcellus", sans-serif;
   --font-informal: "ShadowsIntoLight", cursive;
   --font-heading: 'Montserrat', sans-serif;
   --font-size-base: 1rem;
@@ -97,6 +107,10 @@ Required WordPress CSS
 
 .f-serius {
   font-family: var(--font-serius);
+}
+
+.f-normal {
+  font-family: var(--font-normal);
 }
 
 .f-informal {

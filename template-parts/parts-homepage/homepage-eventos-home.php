@@ -1,0 +1,24 @@
+<?php
+$titulo      = get_field('eventos_titulo', 'option');
+$texto       = get_field('eventos_texto', 'option');
+$mostrar_ventos = get_field('visible_eventos_home', 'option');
+?>
+
+<?php if ($mostrar_ventos): ?>
+  <div class="jumbotron jumbotron-fluid text-center bg-lila text-white mb-0">
+    <div class="container">
+      <?php if ($titulo): ?>
+        <h1 class="display-4 f-dulcing"><?php echo esc_html($titulo); ?></h1>
+      <?php endif; ?>
+
+      <?php if ($texto): ?>
+        <p class="lead f-serius mb-5"><?php echo esc_html($texto); ?></p>
+      <?php endif; ?>
+
+        <?php
+        $wa_numero  = get_field('whatsapp_delicias', 'options');
+        whatsapp_btn($wa_numero, '');
+        ?>
+    </div>
+  </div>
+<?php endif; ?>

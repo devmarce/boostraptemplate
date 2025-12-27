@@ -1,4 +1,6 @@
 <?php
+$mostrar_carrusel = get_field('visible_banner_home', 'option');
+
 $args = array(
   'numberposts' => -1,          // cantidad de entradas
   'post_type'   => 'post',     // tipo de contenido (post, page, custom)
@@ -8,7 +10,8 @@ $args = array(
 
 $novedades = get_posts($args);
 ?>
-<!-- test @borrar -->
+
+
 <style type="text/css">
   /* ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ HOMEPAGE ÚLTIMOS EVENTOS ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ */
   .base-template {

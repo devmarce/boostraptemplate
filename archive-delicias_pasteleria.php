@@ -38,18 +38,15 @@ $productos_grouped = get_pasteleria_grouped_by_category();
 
   /* ===== Zócalo categoría ===== */
   .zocalo-category {
-    background: var(--color-primary);
-    background-repeat: round !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 25px;
+    padding: 3px 25px;
     margin-bottom: 20px;
     border-radius: 8px;
   }
 
   .title-categoria {
-    color: #ff00d4 !important;
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 1px;
@@ -58,7 +55,7 @@ $productos_grouped = get_pasteleria_grouped_by_category();
 
   /* ===== Tarjetas de producto ===== */
   .producto-wrapper {
-    border: none;
+    border: 1px solid #00000029;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -71,7 +68,7 @@ $productos_grouped = get_pasteleria_grouped_by_category();
   }
 
   .producto-wrapper .card-img-top {
-    height: 220px;
+    height: 20rem;
     object-fit: cover;
     border-bottom: 1px solid #eee;
   }
@@ -81,10 +78,9 @@ $productos_grouped = get_pasteleria_grouped_by_category();
   }
 
   .producto-wrapper .card-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 10px;
+    font-size: 2rem;
+    color: #7000ff;
+    margin-bottom: 2rem;
   }
 
   /* ===== Badges y precios ===== */
@@ -99,12 +95,11 @@ $productos_grouped = get_pasteleria_grouped_by_category();
   }
 
   .card-text {
-    font-size: 0.95rem;
-    color: #555;
+    color: #c77e0d;
   }
 
   .title-prod-category {
-    background: #0a050591;
+    background: #000000;
     padding: 0.5rem;
     border-radius: 0.5rem;
     border: 1px #fff solid;
@@ -131,29 +126,30 @@ $productos_grouped = get_pasteleria_grouped_by_category();
   .contador-oferta .expirado {
     color: #dc3545;
   }
+
   /* ===== Precios con clases ===== */
-.precio-real-tachada {
-  text-decoration: line-through;
-  color: #888;
-}
+  .precio-real-tachada {
+    text-decoration: line-through;
+    color: #888;
+  }
 
-.precio-real-expirada {
-  text-decoration: none;
-  color: #333;
-  font-weight: 600;
-}
+  .precio-real-expirada {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+  }
 
-.precio-oferta-activa {
-  text-decoration: none;
-  color: #ae10ff;
-  font-weight: bolder;
-}
+  .precio-oferta-activa {
+    text-decoration: none;
+    color: #ae10ff;
+    font-weight: bolder;
+  }
 
-.precio-oferta-expirada {
-  text-decoration: line-through;
-  color: red;
-  font-weight: 700;
-}
+  .precio-oferta-expirada {
+    text-decoration: line-through;
+    color: red;
+    font-weight: 700;
+  }
 
 
   /* ===== Responsive ===== */
@@ -169,7 +165,7 @@ $productos_grouped = get_pasteleria_grouped_by_category();
   }
 </style>
 
-<div class="container-fluid productos-post-container mt-3">
+<div class="productos-post-container mt-3">
   <div class="row no-gutters">
     <div class="col-12 text-center">
       <section id="tabs">
@@ -220,14 +216,12 @@ $productos_grouped = get_pasteleria_grouped_by_category();
                     <?php foreach ($productos_grouped as $categoria => $items) : ?>
 
                       <!-- Zócalo de categoría -->
-                      <div class="zocalo-category"
-                        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/custom/category-back3.png');">
+                      <div class="zocalo-category bg-oro-manga mb-5">
                         <div class="title-prod-category">
-                          <h2 class="title-categoria text-white text-uppercase">
+                          <h2 class="title-categoria text-whit f-normal oro-leter">
                             <?php echo esc_html(ucfirst($categoria)); ?>
                           </h2>
                         </div>
-                        <div><img src="<?php echo get_template_directory_uri(); ?>/assets/img/marca/logo dulcing.png" alt="Logo"></div>
                       </div>
 
                       <div class="row">
@@ -241,8 +235,8 @@ $productos_grouped = get_pasteleria_grouped_by_category();
                           $precio_temporal_hasta = $item['precio_temporal_hasta'] ?? '';
                           ?>
 
-                          <div class="col-lg-4 col-md-6 col-sm-12 mb-4 px-4">
-                            <div class="card h-100 producto-wrapper bg-light">
+                          <div class="col-lg-4 col-md-6 col-sm-12 mb-4 px-lg-3 px-sm-1">
+                            <div class="card h-100 producto-wrapper">
 
                               <img class="card-img-top img-fluid"
                                 src="<?php echo esc_url($item['imagen']); ?>"
@@ -250,14 +244,14 @@ $productos_grouped = get_pasteleria_grouped_by_category();
 
                               <div class="card-body">
 
-                                <h5 class="card-title"><?php echo esc_html($item['nombre']); ?></h5>
+                                <h5 class="card-title f-normal"><?php echo esc_html($item['nombre']); ?></h5>
 
                                 <?php if (!empty($item['tag_promo'])) : ?>
                                   <span class="badge badge-warning"><?php echo esc_html($item['tag_promo']); ?></span>
                                 <?php endif; ?>
 
                                 <!-- Precios -->
-                                <div class="delicia-detalles">
+                                <div class="delicia-detalles f-serius">
 
                                   <?php if ($precio_temporal > 0 && !empty($precio_temporal_hasta)) : ?>
 
@@ -286,12 +280,12 @@ $productos_grouped = get_pasteleria_grouped_by_category();
 
                                   <!-- Descripción -->
                                   <?php if (!empty($item['descripcion_corta'])) : ?>
-                                    <p class="card-text"><?php echo esc_html($item['descripcion_corta']); ?></p>
+                                    <p class="card-text mt-5 f-normal"><?php echo esc_html($item['descripcion_corta']); ?></p>
                                   <?php endif; ?>
 
                                   <!-- Botón ver delicia -->
                                   <a href="<?php echo esc_url(add_query_arg('id', $item['id'], home_url('/ver-delicia/'))); ?>"
-                                    class="btn btn-primary mt-1">Ver Delicia</a>
+                                    class="btn btn-primary">Ver Delicia</a>
 
                                   <!-- WhatsApp -->
                                   <?php
@@ -326,14 +320,12 @@ $productos_grouped = get_pasteleria_grouped_by_category();
                       aria-labelledby="<?php echo $tab_id; ?>-tab">
 
                       <!-- Zócalo -->
-                      <div class="zocalo-category"
-                        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/custom/category-back3.png');">
+                      <div class="zocalo-category bg-oro-manga mb-5">
                         <div class="title-prod-category">
-                          <h2 class="title-categoria text-white text-uppercase">
+                          <h2 class="title-categoria text-whit f-normal oro-leter">
                             <?php echo esc_html(ucfirst($categoria)); ?>
                           </h2>
                         </div>
-                        <div><img src="<?php echo get_template_directory_uri(); ?>/assets/img/marca/logo dulcing.png" alt="Logo"></div>
                       </div>
 
                       <div class="row">
@@ -345,8 +337,8 @@ $productos_grouped = get_pasteleria_grouped_by_category();
                           $precio_temporal_hasta = $item['precio_temporal_hasta'] ?? '';
                           ?>
 
-                          <div class="col-lg-4 col-md-6 col-sm-12 mb-4 px-4">
-                            <div class="card h-100 producto-wrapper bg-light">
+                          <div class="col-lg-4 col-md-6 col-sm-12 mb-4 px-lg-3 px-sm-1">
+                            <div class="card h-100 producto-wrapper">
 
                               <img class="card-img-top img-fluid"
                                 src="<?php echo esc_url($item['imagen']); ?>"
@@ -354,14 +346,14 @@ $productos_grouped = get_pasteleria_grouped_by_category();
 
                               <div class="card-body">
 
-                                <h5 class="card-title"><?php echo esc_html($item['nombre']); ?></h5>
+                                <h5 class="card-title f-normal"><?php echo esc_html($item['nombre']); ?></h5>
 
                                 <?php if (!empty($item['tag_promo'])) : ?>
                                   <span class="badge badge-warning"><?php echo esc_html($item['tag_promo']); ?></span>
                                 <?php endif; ?>
 
                                 <!-- Precios -->
-                                <div class="delicia-detalles">
+                                <div class="delicia-detalles f-serius">
 
                                   <?php if ($precio_temporal > 0 && !empty($precio_temporal_hasta)) : ?>
 
@@ -390,12 +382,12 @@ $productos_grouped = get_pasteleria_grouped_by_category();
 
                                   <!-- Descripción -->
                                   <?php if (!empty($item['descripcion_corta'])) : ?>
-                                    <p class="card-text"><?php echo esc_html($item['descripcion_corta']); ?></p>
+                                    <p class="card-text mt-5 f-normal"><?php echo esc_html($item['descripcion_corta']); ?></p>
                                   <?php endif; ?>
 
                                   <!-- Botón ver delicia -->
                                   <a href="<?php echo esc_url(add_query_arg('id', $item['id'], home_url('/ver-delicia/'))); ?>"
-                                    class="btn btn-primary mt-1">Ver Delicia</a>
+                                    class="btn btn-primary">Ver Delicia</a>
 
                                   <!-- WhatsApp -->
                                   <?php
@@ -451,7 +443,7 @@ $productos_grouped = get_pasteleria_grouped_by_category();
         const diff = fechaLimite - ahora;
 
         /* ============================================
-          OFERTA EXPIRADA
+        OFERTA EXPIRADA
         ============================================ */
         if (diff <= 0) {
 
@@ -471,7 +463,7 @@ $productos_grouped = get_pasteleria_grouped_by_category();
         }
 
         /* ============================================
-          OFERTA VIGENTE
+        OFERTA VIGENTE
         ============================================ */
         if (precioReal) {
           precioReal.classList.add("precio-real-tachada");
@@ -489,7 +481,7 @@ $productos_grouped = get_pasteleria_grouped_by_category();
         const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const segundos = Math.floor((diff % (1000 * 60)) / 1000);
 
-        contador.innerHTML = 
+        contador.innerHTML =
           `❤️‍🔥 Quedan <strong>${dias}d ${horas}h ${minutos}m ${segundos}s</strong>`;
       }
 

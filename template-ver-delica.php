@@ -218,14 +218,14 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
 
 <div class="container ver-delicia">
 
-  <h1><?php echo esc_html($nombre); ?></h1>
+  <h1 class="f-dulcing"><?php echo esc_html($nombre); ?></h1>
 
   <?php if ($promo): ?>
-    <span class="badge badge-success"><?php echo esc_html($promo); ?></span>
+    <span class="badge badge-success my-1"><?php echo esc_html($promo); ?></span>
   <?php endif; ?>
 
   <?php if ($hot_sale): ?>
-    <span class="badge badge-danger">🔥 Hot Sale</span>
+    <span class="badge badge-danger my-1">🔥 Hot Sale</span>
   <?php endif; ?>
 
   <div class="delicia-info">
@@ -234,8 +234,9 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
       <img src="<?php echo esc_url($imagen_url); ?>" alt="<?php echo esc_attr($nombre); ?>">
     </div>
 
-    <div class="delicia-detalles">
-      <p><strong>Descripción corta:</strong> <?php echo esc_html($descripcion_corta); ?></p>
+    <div class="delicia-detalles f-normal">
+      <p class="f-serius"><?php echo esc_html($descripcion_corta); ?></p>
+      <hr>
       <p><strong>Estado:</strong> <?php echo esc_html($estado); ?></p>
       <p><strong>Categoría:</strong> <?php echo esc_html($categoria); ?></p>
 
@@ -275,14 +276,10 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
     </div>
   </div>
 
-  <hr>
+  <h2 class="f-dulcing color-primary">Conocé más</h2>
+  <div class="f-normal"><?php echo wp_kses_post($descripcion); ?></div>
 
-  <h2>Descripción completa</h2>
-  <div><?php echo wp_kses_post($descripcion); ?></div>
-
-  <hr>
-
-  <h2>Galería</h2>
+  <h2 class="f-dulcing color-primary">Galería</h2>
   <div class="galeria">
     <?php
     if ($galeria && is_array($galeria)):

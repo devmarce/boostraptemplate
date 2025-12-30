@@ -4,6 +4,10 @@ Template Name: Contacto Pastelería
 */
 get_header(); ?>
 
+<?php 
+the_content();
+?>
+
 <!-- Banner -->
 <section class="container-fluid p-0">
   <?php if ($banner = get_field('banner_contacto')): ?>
@@ -18,7 +22,7 @@ get_header(); ?>
     <div class="col-md-6">
       <div class="card text-center shadow">
         <div class="card-header olograma bg-black">
-          <h4 class="f-serius reflejo mb-3"><?php the_field('pago_titulo'); ?></h4>
+          <h4 class="f-serius reflejo mb-3 text-white"><?php the_field('pago_titulo'); ?></h4>
         </div>
         <div class="card-body bg-manga">
           <p style="color: white;"><?php the_field('pago_texto'); ?></p>
@@ -44,12 +48,12 @@ get_header(); ?>
 <section class="container my-5">
   <h2 class="text-center mb-4 f-dulcing">Pedidos y Entregas</h2>
   <div class="row my-5">
-    <div class="col-md-6">
-      <h5 class="f-serius"><?php the_field('pedidos_titulo'); ?></h5>
+    <div class="col-md-6 text-center">
+      <h5 class="f-serius mb-5"><?php the_field('pedidos_titulo'); ?></h5>
       <p><?php the_field('pedidos_texto'); ?></p>
     </div>
-    <div class="col-md-6">
-      <h5 class="f-serius"><?php the_field('entregas_titulo'); ?></h5>
+    <div class="col-md-6 text-center">
+      <h5 class="f-serius mb-5"><?php the_field('entregas_titulo'); ?></h5>
       <p><?php the_field('entregas_texto'); ?></p>
     </div>
   </div>
@@ -63,21 +67,21 @@ get_header(); ?>
 
 .hover-custom:hover {
   transform: scale(1.04) translateY(-6px);
-  box-shadow: 0 18px 35px rgb(247 11 174 / 20%);
+  box-shadow: 0 18px 35px rgb(251 3 255);
 }
 
 </style>
 <!-- Sección encargos especiales -->
 <section class="container my-5">
-  <h2 class="text-center mb-4 py-2 f-dulcing">Encargos Especiales</h2>
+  <h2 class="text-center mb-5 py-2 f-dulcing reflejo">Encargos Especiales</h2>
   <div class="row">
     <?php if (have_rows('encargos')): ?>
       <?php while (have_rows('encargos')): the_row(); ?>
-        <div class="col-md-4">
+        <div class="col-md-4 mt-5">
           <div class="card mb-4 hover-custom">
-            <div class="card-body border-manga">
-              <h5 class="card-title f-dulcing fw-bolder"><?php the_sub_field('encargo_titulo'); ?></h5>
-              <p class="card-text f-serius"><?php the_sub_field('encargo_texto'); ?></p>
+            <div class="card-body border-oro bg-black text-center">
+              <h2 class="card-title f-dulcing oro-leter mb-5"><?php the_sub_field('encargo_titulo'); ?></h2>
+              <p class="card-text f-serius text-white"><?php the_sub_field('encargo_texto'); ?></p>
             </div>
           </div>
         </div>

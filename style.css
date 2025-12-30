@@ -4,7 +4,7 @@ Theme URI: https://Marcelo.com
 Author: Marcelo MAM
 Author URI: https://github.com/devmarce/boostraptemplate
 Description: Bootstrap v.4 basic theme for developers to build their new theme very fast and easy. (WordPress 5 or Gutenberg ready.) The concept is to keep it basic, no rich features, no additional functions; all of these for theme developers will be easier to start develop their theme. Please read notice on Bootstrap Basic 4 Help page in Dashboard &gt; Appearance &gt; Bootstrap Basic4 Help.
-Version: 1.4.1
+Version: 1.4.2
 Requires PHP: 5.5
 Requires at least: 5.0
 Tested up to: 6.9
@@ -158,6 +158,10 @@ body {
     background: linear-gradient(to bottom, #ff7ee9 27%, #f0b3ff 40%, #65027c 78%);
 }
 
+.bg-oro-manga {
+    background: linear-gradient(to bottom, #d901cf 27%, #e21dac 40%, #9f05a3 78%);
+}
+
 .bg-oro {
     background: linear-gradient(to bottom, #cfc09f 27%, #ffecb3 40%, #664d07 78%);
 }
@@ -214,12 +218,12 @@ body {
 
 /* btn Solicitar Azul */
 .btn-whatsapp {
-  background: #25D366 !important;
+  background: linear-gradient(to bottom, #52b35a -10%, #b3ffb5 5%, #0a7c02 159%) !important;
   color: #fff !important;
 }
 
 .btn-whatsapp:hover {
-  background: var(--color-manga) !important;
+  background: linear-gradient(to bottom, #b3528c -10%, #ffb3f6 5%, var(--color-manga) 159%) !important;
   color: white !important;
   cursor: pointer;
 
@@ -243,6 +247,10 @@ body {
 
 .border-manga {
   border: 1px solid var(--color-manga) !important;
+}
+
+.border-oro {
+  border: 2px #b38f07 solid !important;
 }
 
 /* ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ STYLES MODAL FORMS ‖‖‖‖‖‖‖‖‖‖‖‖‖‖‖ */
@@ -480,4 +488,41 @@ body {
         0 1px 1px #c6bb9f,
         5px 5px 10px rgba(0, 0, 0, 0.4),
         -5px -5px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+/* HOMEPAGE STYLES CSS */
+
+/* =====COMP: homepage-eventos-home */
+@media (max-width: 556px) {
+  #component-events .container h2 {
+    font-size: 2rem;
+  }
+}
+
+/* A partir de pantallas grandes (≥1200px) */
+@media (min-width: 1200px) {
+  #component-events .container h2 {
+    font-size: 3.5rem;
+  }
+}
+
+/* =====COMP: homepage-banner-destacado */
+#component-banner-destacado {
+  background-size: cover;
+  background-position: center;
+  padding: 80px 100px;
+  color: #fff;
+  min-height: 35rem;
+}
+@media (max-width: 556px) {
+  #component-banner-destacado {
+    padding: 1.2rem;
+  }
+  #component-banner-destacado .title-banner{
+    font-size: 2.2rem;
+  }
+  #component-banner-destacado .lead {
+    font-size: 1.2rem;
+  }
 }

@@ -309,7 +309,7 @@ $novedades = get_posts($args);
                     <div class="emotions-slider-item__content">
                       <div class="emotions-slider-item__footer">
                         <a class="emotions-slider-item__btn"
-                          href="<?php echo esc_url(get_permalink($novedad->ID)); ?>" target="_blank">
+                          href="<?php echo esc_url(get_permalink($novedad->ID)); ?>" target="_blank" style="background: linear-gradient(to bottom, #df7eff 27%, #f0b3ff 40%, #5e027c 78%);">
                           <span class="emotions-slider-item__btn-text f-informal">
                             <?php echo esc_html($novedad->post_title); ?>
                           </span>

@@ -4,7 +4,12 @@ $titulo = get_field('banner_titulo', 'option');
 $texto  = get_field('banner_texto', 'option');
 $boton_texto = get_field('banner_boton_texto', 'option');
 $boton_url   = get_field('banner_boton_url', 'option');
-$imagen      = get_field('banner_imagen', 'option');
+
+if (wp_is_mobile()) {
+$imagen = get_field('banner_imagen_mobile', 'option');
+} else {
+  $imagen  = get_field('banner_imagen', 'option');
+}
 ?>
 
 <?php if ($mostrar): ?>
@@ -16,22 +21,17 @@ $imagen      = get_field('banner_imagen', 'option');
       background: #ffbe003d;
     }
     .bg-hover-dorado:hover {
-      background: #ff00af7a;
+      background: #f100ff8c;
     }
   </style>
 
 
-  <div class="banner text-center"
-    style="background-image: url('<?php echo esc_url($imagen['url']); ?>'); 
-              background-size: cover;
-              background-position: center; 
-              padding: 80px 100px; 
-              color: #fff;
-              min-height: 35rem;">
+  <div id="component-banner-destacado" class="banner text-center"
+    style="background-image: url('<?php echo esc_url($imagen['url']); ?>');">
 
     <div class="bg-hover-dorado">
     <?php if ($titulo): ?>
-      <h1 class="display-4 f-dulcing title_bananer mb-0"><?php echo esc_html($titulo); ?></h1>
+      <h2 class="display-4 f-dulcing title_bananer mb-0"><?php echo esc_html($titulo); ?></h2>
     <?php endif; ?>
 
     <?php if ($texto): ?>

@@ -293,6 +293,16 @@ if (function_exists('acf_add_local_field_group')):
                 'preview_size' => 'medium',
                 'library' => 'all',
             ),
+            array(
+                'key' => 'field_banner_imagen_mobile',
+                'label' => 'Imagen de fondo',
+                'name' => 'banner_imagen_mobile',
+                'type' => 'image',
+                'instructions' => 'Imagen de fondo del banner.',
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+            ),
         ),
         'location' => array(
             array(

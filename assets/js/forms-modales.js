@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-  // ==== JS-COTIZAR-MACHINE ==== levantar modal y setear datos
+  // ==== JS-COTIZAR-DELICIA ==== levantar modal y setear datos
   $(document).on('click', '.js-cotizar-delicia', function(e) {
     e.preventDefault();
 
@@ -12,7 +12,10 @@ jQuery(document).ready(function($) {
     // Dispara el modal
     $('#cotizarDelicia').modal('show');
 
-    // Selecciona el <select> y setea la opción correspondiente
+    // Seteamos el valor en el hidden delicia (CF7)
+    $('input[name="delicia"]').val(deliciaName);
+
+    // Mantener el select funcionando como respaldo visual
     const selectModelo = document.querySelector('select[name="delicia"]');
     if (selectModelo) {
       // Resetear al placeholder primero
@@ -26,6 +29,7 @@ jQuery(document).ready(function($) {
     }
   });
 });
+
 
 document.addEventListener('DOMContentLoaded', function() {
     // Selecciona el select de CF7 por su name

@@ -279,18 +279,19 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
   <h2 class="f-dulcing color-primary">Conocé más</h2>
   <div class="f-normal"><?php echo wp_kses_post($descripcion); ?></div>
 
-  <h2 class="f-dulcing color-primary">Galería</h2>
-  <div class="galeria">
-    <?php
-    if ($galeria && is_array($galeria)):
-      foreach ($galeria as $img):
-        if (!empty($img['url'])): ?>
-          <img src="<?php echo esc_url($img['url']); ?>" class="galeria-item" alt="<?php echo esc_attr($nombre); ?>">
-    <?php endif;
-      endforeach;
-    endif;
-    ?>
-  </div>
+  <?php if ($galeria && is_array($galeria)): ?>
+    <h2 class="f-dulcing color-primary">Galería</h2>
+    <div class="galeria">
+      <?php
+      
+        foreach ($galeria as $img):
+          if (!empty($img['url'])): ?>
+            <img src="<?php echo esc_url($img['url']); ?>" class="galeria-item" alt="<?php echo esc_attr($nombre); ?>">
+      <?php endif;
+        endforeach;
+      ?>
+    </div>
+  <?php endif; ?>
 
 </div>
 <script>

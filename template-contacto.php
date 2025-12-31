@@ -49,14 +49,15 @@ the_content();
   <h2 class="text-center mb-4 f-dulcing">Pedidos y Entregas</h2>
   <div class="row my-5">
     <div class="col-md-6 text-center">
-      <h5 class="f-serius mb-5"><?php the_field('pedidos_titulo'); ?></h5>
+      <h5 class="f-serius mb-5 color-primary"><?php the_field('pedidos_titulo'); ?></h5>
       <p><?php the_field('pedidos_texto'); ?></p>
     </div>
     <div class="col-md-6 text-center">
-      <h5 class="f-serius mb-5"><?php the_field('entregas_titulo'); ?></h5>
+      <h5 class="f-serius mb-5 color-primary"><?php the_field('entregas_titulo'); ?></h5>
       <p><?php the_field('entregas_texto'); ?></p>
     </div>
   </div>
+  <hr>
 </section>
 <!-- test @borrar -->
 <style type="text/css">

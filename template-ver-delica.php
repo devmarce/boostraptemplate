@@ -220,80 +220,18 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
 
   <h1 class="f-dulcing"><?php echo esc_html($nombre); ?></h1>
 
-  <?php if ($promo): ?>
-    <span class="badge badge-success my-1"><?php echo esc_html($promo); ?></span>
-  <?php endif; ?>
+  <?php include(get_template_directory() . "/template-parts/parts-ver-delicias/verdelicias-tags.php"); ?>
 
-  <?php if ($hot_sale): ?>
-    <span class="badge badge-danger my-1">🔥 Hot Sale</span>
-  <?php endif; ?>
+  <?php include(get_template_directory() . "/template-parts/parts-ver-delicias/verdelicas-card-product.php"); ?>
 
-  <div class="delicia-info">
+  <?php include(get_template_directory() . "/template-parts/parts-ver-delicias/verdelicas-description-long.php"); ?>
+  
+  <?php include(get_template_directory() . "/template-parts/parts-ver-delicias/verdelicas-gallery.php"); ?>
 
-    <div class="delicia-imagen">
-      <img src="<?php echo esc_url($imagen_url); ?>" alt="<?php echo esc_attr($nombre); ?>">
-    </div>
+</div><!-- }end: container ver-delicia -->
 
-    <div class="delicia-detalles f-normal">
-      <p class="f-serius"><?php echo esc_html($descripcion_corta); ?></p>
-      <hr>
-      <p><strong>Estado:</strong> <?php echo esc_html($estado); ?></p>
-      <p><strong>Categoría:</strong> <?php echo esc_html($categoria); ?></p>
 
-      <?php if ($precio_temporal > 0 && !empty($precio_temporal_hasta)): ?>
-        <p><strong>Precio:</strong> <del>$<?php echo number_format($precio_real, 2); ?></del></p>
-        <p><strong>Precio oferta:</strong> <span class="precio-oferta">$<?php echo number_format($precio_temporal, 2); ?></span></p>
-        <p><strong>Vigencia:</strong> hasta <?php echo date_i18n('d/m/Y', strtotime($precio_temporal_hasta)); ?></p>
-        <div id="contador-<?php echo esc_attr($id); ?>" class="contador-oferta"></div>
-      <?php else: ?>
-        <p><strong>Precio:</strong> $<?php echo number_format($precio, 2); ?></p>
-      <?php endif; ?>
 
-      <?php if ($descuento > 0): ?>
-        <p><strong>Descuento:</strong> <?php echo $descuento; ?>%</p>
-      <?php endif; ?>
-
-      <p><strong>Stock disponible:</strong> <?php echo $stock; ?> (<?php echo esc_html($unidad); ?>)</p>
-
-      <hr>
-
-      <!-- Botones de acción -->
-      <?php if ($modal_form): ?>
-        <a
-          href="<?php echo !empty($enlace_solicitar) ? esc_url($enlace_solicitar) : '#'; ?>"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn-primary-form <?php echo !empty($modal_form) ? 'js-cotizar-delicia' : ''; ?>"
-          data-model-id="<?php echo esc_attr($id); ?>"
-          data-model-name="<?php echo esc_attr($nombre); ?>"
-          data-model-category="<?php echo esc_attr($categoria); ?>">
-          Encargar
-        </a>
-      <?php endif; ?>
-
-      <!-- btn whatsapp -->
-      <?php echo whatsapp_delicias(esc_attr($nombre), $wa_delicias); ?>
-    </div>
-  </div>
-
-  <h2 class="f-dulcing color-primary">Conocé más</h2>
-  <div class="f-normal"><?php echo wp_kses_post($descripcion); ?></div>
-
-  <?php if ($galeria && is_array($galeria)): ?>
-    <h2 class="f-dulcing color-primary">Galería</h2>
-    <div class="galeria">
-      <?php
-      
-        foreach ($galeria as $img):
-          if (!empty($img['url'])): ?>
-            <img src="<?php echo esc_url($img['url']); ?>" class="galeria-item" alt="<?php echo esc_attr($nombre); ?>">
-      <?php endif;
-        endforeach;
-      ?>
-    </div>
-  <?php endif; ?>
-
-</div>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 

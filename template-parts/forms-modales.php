@@ -25,3 +25,17 @@
   </div>
 </div>
 <?php endif; ?>
+
+<!-- Modal Gallery -->
+<div id="modal" class="modal">
+  <span onclick="closeModal()" class="close">&times;</span>
+  
+  <button onclick="prevImage()" class="nav nav-gallery-left">⟨</button>
+  
+  <div class="modal-gallery-produc">
+    <img id="modal-img" src="" alt="" class="modal-img">
+    <div id="modal-caption" class="bg-oro-manga f-normal"></div>
+  </div>
+  
+  <button onclick="nextImage()" class="nav nav-gallery-right">⟩</button>
+</div>

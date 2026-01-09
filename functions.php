@@ -161,6 +161,7 @@ function get_pasteleria_grouped_by_category()
             $precio_temporal  = get_field('precio_temporal', $post->ID);
             $descuento        = get_field('descuento', $post->ID);
             $estado           = esc_html(get_field('estado', $post->ID));
+            $aclaracion       = esc_html(get_field('aclaracion', $post->ID));
             $tag_promo        = esc_html(get_field('tag_promo', $post->ID));
             $stock            = get_field('stock', $post->ID);
             $unidad           = esc_html(get_field('unidad', $post->ID));
@@ -207,6 +208,7 @@ function get_pasteleria_grouped_by_category()
                 'precio_temporal_hasta' => get_field('precio_temporal_hasta', $id) ?: '',
                 'descuento'                 => $descuento,
                 'estado'                    => $estado,
+                'aclaracion'                => $aclaracion,
                 'tag_promo'                 => $tag_promo,
                 'stock'                     => $stock,
                 'unidad'                    => $unidad,
@@ -255,7 +257,7 @@ function responsive_device($device)
 
 // Enqueue y pasar datos de los modelos al JS (forms-modales)
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_script('form-modelos', get_stylesheet_directory_uri() . '/assets/js/form-modelos.js', ['jquery'], time(), true);
+    wp_enqueue_script('forms-modales', get_stylesheet_directory_uri() . '/assets/js/forms-modales.js', ['jquery'], time(), true);
 
     // Obtenemos los modelos
     $productos_pasteleria_cat = get_pasteleria_grouped_by_category();
@@ -267,7 +269,7 @@ add_action('wp_enqueue_scripts', function () {
         }
     }
 
-    wp_localize_script('form-modelos', 'deliciasData', [
+    wp_localize_script('forms-modales', 'deliciasData', [
         'delicias' => $productos
     ]);
 });

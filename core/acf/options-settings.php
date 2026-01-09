@@ -5,6 +5,49 @@ if (!defined('ABSPATH')) {
 
 if( function_exists('acf_add_local_field_group') ):
 
+// Novedades Instagram
+if (function_exists('acf_add_local_field_group')):
+    acf_add_local_field_group(array(
+        'key' => 'group_feed_instagram',
+        'title' => 'Novedades Instagram 📸',
+        'fields' => array(
+            array(
+                'key' => 'field_titulo',
+                'label' => 'Título del componente',
+                'name' => 'title_feed_instagram',
+                'type' => 'text',
+                'instructions' => 'Título para este componeten (opcional)',
+                'required' => 0,
+            ),
+            array(
+                'key' => 'field_feed_instagram',
+                'label' => 'Shortcode (Smash Balloon Social Photo Feed shortcode)',
+                'name' => 'shortcode_feed_instagram',
+                'type' => 'text',
+                'instructions' => 'Shortcode del plugin: Smash Balloon Social Photo Feed',
+                'required' => 0,
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'options_page',
+                    'operator' => '==',
+                    'value' => 'acf-options-configuracion',
+                ),
+            ),
+        ),
+        'menu_order' => 2,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'active' => 1,
+        'description' => 'Campos para cargar shortcode del feed Instagram',
+    ));
+
+endif;
+
 acf_add_local_field_group(array(
     'key' => 'group_og_image',
     'title' => 'Configuración OG',

@@ -29,6 +29,13 @@ if (function_exists('acf_add_local_field_group')):
                 'ui' => 1,
             ),
             array(
+                'key' => 'field_aclaracion',
+                'label' => 'Aclaración',
+                'name' => 'aclaracion',
+                'instructions' => '',
+                'type' => 'text',
+            ),
+            array(
                 'key' => 'field_categoria',
                 'label' => '🎂 Categoría',
                 'name' => 'categoria',

@@ -12,7 +12,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="cotizarDeliciaLabel">Solicitar encargo de <span class="modal-title-destac text-uppercase"></span></h1>
+        <h1 class="modal-title f-normal" id="cotizarDeliciaLabel">Solicitar encargo de <span class="modal-title-destac f-dulcing"></span></h1>
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">x</button>
       </div>
 
@@ -25,17 +25,3 @@
   </div>
 </div>
 <?php endif; ?>
-
-<!-- Modal Gallery -->
-<div id="modal" class="modal">
-  <span onclick="closeModal()" class="close">&times;</span>
-  
-  <button onclick="prevImage()" class="nav nav-gallery-left">⟨</button>
-  
-  <div class="modal-gallery-produc">
-    <img id="modal-img" src="" alt="" class="modal-img">
-    <div id="modal-caption" class="bg-oro-manga f-normal"></div>
-  </div>
-  
-  <button onclick="nextImage()" class="nav nav-gallery-right">⟩</button>
-</div>

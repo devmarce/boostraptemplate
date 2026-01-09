@@ -18,6 +18,8 @@ get_header();
 
 <?php include(get_template_directory() . "/template-parts/parts-homepage/homepage-eventos-home.php"); ?>
 
+<?php include(get_template_directory() . "/template-parts/feed-instagram.php"); ?>
+
 <?php include(get_template_directory() . "/template-parts/parts-homepage/homepage-cards-formas-pago.php"); ?>
 
 <?php include(get_template_directory() . "/template-parts/parts-homepage/homepage-banner-destacado.php"); ?>

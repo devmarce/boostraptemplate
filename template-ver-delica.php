@@ -32,6 +32,7 @@ $nombre                 = get_field('nombre', $id);
 $descripcion            = get_field('descripcion', $id);
 $descripcion_corta      = get_field('descripcion_corta', $id);
 $estado                 = get_field('estado', $id);
+$aclaracion                 = get_field('aclaracion', $id);
 $categoria              = get_field('categoria', $id);
 $precio_real            = floatval(get_field('precio', $id));
 $precio_temporal        = floatval(get_field('precio_temporal', $id));
@@ -214,11 +215,42 @@ $wa_delicias = get_field('whatsapp_delicias', 'option');
   .contador-oferta .expirado {
     color: #dc3545;
   }
+
+  .hover-underline {
+  font-size: 2rem;
+  color: #ffffff;
+  position: relative;
+}
+
+.hover-underline::after,
+.hover-underline::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-out;
+}
+
+.hover-underline::before {
+  top: -5px;
+  transform-origin: left;
+}
+
+.hover-underline:hover::after,
+.hover-underline:hover::before {
+  transform: scaleX(1);
+}
 </style>
 
 <div class="container ver-delicia">
 
-  <h1 class="f-dulcing"><?php echo esc_html($nombre); ?></h1>
+
+  <h1 class="f-dulcing hover-underline"><?php echo esc_html($nombre); ?></h1>
 
   <?php include(get_template_directory() . "/template-parts/parts-ver-delicias/verdelicias-tags.php"); ?>
 

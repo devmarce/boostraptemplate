@@ -83,9 +83,274 @@ acf_add_local_field_group(array(
 
 endif;
 
+if (function_exists('acf_add_local_field_group')):
+    acf_add_local_field_group(array(
+        'key' => 'group_redes_sociales',
+        'title' => '🌐 Redes Sociales',
+        'fields' => array(
+            // Instagram
+            array(
+                'key' => 'field_instagram_link',
+                'label' => 'Instagram Link',
+                'name' => 'instagram_link',
+                'type' => 'link',
+                'wrapper' => array('width' => '25'),
+                'return_format' => 'array',
+            ),
+            array(
+                'key' => 'field_instagram_text',
+                'label' => 'Instagram Texto',
+                'name' => 'instagram_text',
+                'type' => 'text',
+                'wrapper' => array('width' => '25'),
+            ),
+            array(
+                'key' => 'field_instagram_icon',
+                'label' => 'Instagram Ícono',
+                'name' => 'instagram_icon',
+                'type' => 'image',
+                'wrapper' => array('width' => '25'),
+                'return_format' => 'array',
+                'preview_size' => 'thumbnail',
+            ),
+            array(
+                'key' => 'field_instagram_checkbox',
+                'label' => 'Instagram Checkbox',
+                'name' => 'instagram_checkbox',
+                'type' => 'checkbox',
+                'choices' => array(
+                    'mostrar' => 'Mostrar',
+                ),
+                'wrapper' => array('width' => '25'),
+            ),
+
+            // Facebook
+            array(
+                'key' => 'field_facebook_link',
+                'label' => 'Facebook Link',
+                'name' => 'facebook_link',
+                'type' => 'link',
+                'wrapper' => array('width' => '25'),
+                'return_format' => 'array',
+            ),
+            array(
+                'key' => 'field_facebook_text',
+                'label' => 'Facebook Texto',
+                'name' => 'facebook_text',
+                'type' => 'text',
+                'wrapper' => array('width' => '25'),
+            ),
+            array(
+                'key' => 'field_facebook_icon',
+                'label' => 'Facebook Ícono',
+                'name' => 'facebook_icon',
+                'type' => 'image',
+                'wrapper' => array('width' => '25'),
+                'return_format' => 'array',
+                'preview_size' => 'thumbnail',
+            ),
+            array(
+                'key' => 'field_facebook_checkbox',
+                'label' => 'Facebook Checkbox',
+                'name' => 'facebook_checkbox',
+                'type' => 'checkbox',
+                'choices' => array(
+                    'mostrar' => 'Mostrar',
+                ),
+                'wrapper' => array('width' => '25'),
+            ),
+
+            // WhatsApp
+            array(
+                'key' => 'field_whatsapp_link',
+                'label' => 'WhatsApp Link',
+                'name' => 'whatsapp_link',
+                'type' => 'link',
+                'wrapper' => array('width' => '25'),
+                'return_format' => 'array',
+            ),
+            array(
+                'key' => 'field_whatsapp_text',
+                'label' => 'WhatsApp Texto',
+                'name' => 'whatsapp_text',
+                'type' => 'text',
+                'wrapper' => array('width' => '25'),
+            ),
+            array(
+                'key' => 'field_whatsapp_icon',
+                'label' => 'WhatsApp Ícono',
+                'name' => 'whatsapp_icon',
+                'type' => 'image',
+                'wrapper' => array('width' => '25'),
+                'return_format' => 'array',
+                'preview_size' => 'thumbnail',
+            ),
+            array(
+                'key' => 'field_whatsapp_checkbox',
+                'label' => 'WhatsApp Checkbox',
+                'name' => 'whatsapp_checkbox',
+                'type' => 'checkbox',
+                'choices' => array(
+                    'mostrar' => 'Mostrar',
+                ),
+                'wrapper' => array('width' => '25'),
+            ),
+
+            // Email
+            array(
+                'key' => 'field_email_link',
+                'label' => 'Email Link',
+                'name' => 'email_link',
+                'type' => 'link',
+                'wrapper' => array('width' => '25'),
+                'return_format' => 'array',
+            ),
+            array(
+                'key' => 'field_email_text',
+                'label' => 'Email Texto',
+                'name' => 'email_text',
+                'type' => 'text',
+                'wrapper' => array('width' => '25'),
+            ),
+            array(
+                'key' => 'field_email_icon',
+                'label' => 'Email Ícono',
+                'name' => 'email_icon',
+                'type' => 'image',
+                'wrapper' => array('width' => '25'),
+                'return_format' => 'array',
+                'preview_size' => 'thumbnail',
+            ),
+            array(
+                'key' => 'field_email_checkbox',
+                'label' => 'Email Checkbox',
+                'name' => 'email_checkbox',
+                'type' => 'checkbox',
+                'choices' => array(
+                    'mostrar' => 'Mostrar',
+                ),
+                'wrapper' => array('width' => '25'),
+            ),
+
+            // YouTube
+            array(
+                'key' => 'field_youtube_link',
+                'label' => 'YouTube Link',
+                'name' => 'youtube_link',
+                'type' => 'link',
+                'wrapper' => array('width' => '25'),
+                'return_format' => 'array',
+            ),
+            array(
+                'key' => 'field_youtube_text',
+                'label' => 'YouTube Texto',
+                'name' => 'youtube_text',
+                'type' => 'text',
+                'wrapper' => array('width' => '25'),
+            ),
+            array(
+                'key' => 'field_youtube_icon',
+                'label' => 'YouTube Ícono',
+                'name' => 'youtube_icon',
+                'type' => 'image',
+                'wrapper' => array('width' => '25'),
+                'return_format' => 'array',
+                'preview_size' => 'thumbnail',
+            ),
+            array(
+                'key' => 'field_youtube_checkbox',
+                'label' => 'YouTube Checkbox',
+                'name' => 'youtube_checkbox',
+                'type' => 'checkbox',
+                'choices' => array(
+                    'mostrar' => 'Mostrar',
+                ),
+                'wrapper' => array('width' => '25'),
+            ),
+
+            // Especial
+            array(
+                'key' => 'field_especial_link',
+                'label' => 'Especial Link',
+                'name' => 'especial_link',
+                'type' => 'link',
+                'wrapper' => array('width' => '25'),
+                'return_format' => 'array',
+            ),
+            array(
+                'key' => 'field_especial_text',
+                'label' => 'Especial Texto',
+                'name' => 'especial_text',
+                'type' => 'text',
+                'wrapper' => array('width' => '25'),
+            ),
+            array(
+                'key' => 'field_especial_icon',
+                'label' => 'Especial Ícono',
+                'name' => 'especial_icon',
+                'type' => 'image',
+                'wrapper' => array('width' => '25'),
+                'return_format' => 'array',
+                'preview_size' => 'thumbnail',
+            ),
+            array(
+                'key' => 'field_especial_checkbox',
+                'label' => 'Especial Checkbox',
+                'name' => 'especial_checkbox',
+                'type' => 'checkbox',
+                'choices' => array(
+                    'mostrar' => 'Mostrar',
+                ),
+                'wrapper' => array('width' => '25'),
+            ),
+            array(
+                'key' => 'field_especial2_link',
+                'label' => 'Especial 2 Link',
+                'name' => 'especial2_link',
+                'type' => 'link',
+                'wrapper' => array('width' => '25'),
+                'return_format' => 'array',
+            ),
+            array(
+                'key' => 'field_especial2_text',
+                'label' => 'Especial Texto',
+                'name' => 'especial2_text',
+                'type' => 'text',
+                'wrapper' => array('width' => '25'),
+            ),
+            array(
+                'key' => 'field_especial2_icon',
+                'label' => 'Especial 2 Ícono',
+                'name' => 'especial2_icon',
+                'type' => 'image',
+                'wrapper' => array('width' => '25'),
+                'return_format' => 'array',
+                'preview_size' => 'thumbnail',
+            ),
+            array(
+                'key' => 'field_especial2_checkbox',
+                'label' => 'Especial 2 Checkbox',
+                'name' => 'especial2_checkbox',
+                'type' => 'checkbox',
+                'choices' => array(
+                    'mostrar' => 'Mostrar',
+                ),
+                'wrapper' => array('width' => '25'),
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'options_page',
+                    'operator' => '==',
+                    'value' => 'acf-options-configuracion',
+                ),
+            ),
+        ),
+    ));
+endif;
 
 if (function_exists('acf_add_local_field_group')):
-    // Campos ACF de Sucursales y WhatsApp del header
     acf_add_local_field_group(array(
         'key' => 'group_5e3c09gfgfyh9f99c9c4',
         'title' => '📍Enlaces especiales del Header',
@@ -98,7 +363,7 @@ if (function_exists('acf_add_local_field_group')):
                 'instructions' => 'Ingresar el número en formato. Ej: 541122000025',
                 'required' => 1,
                 'wrapper' => array(
-                    'width' => '33',
+                    'width' => '25',
                 ),
             ),
             array(
@@ -109,8 +374,9 @@ if (function_exists('acf_add_local_field_group')):
                 'instructions' => 'Texto se puede armar en <a href="https://crear.wa.link/" target="_blank">Aquí 👈</a>',
                 'required' => 0,
                 'wrapper' => array(
-                    'width' => '33',
+                    'width' => '25',
                 ),
+                'rows' => 3, // altura inicial del textarea
             ),
             array(
                 'key' => 'field_linkespecial',
@@ -120,9 +386,23 @@ if (function_exists('acf_add_local_field_group')):
                 'instructions' => 'Seleccione o ingrese el link Especial',
                 'required' => 0,
                 'wrapper' => array(
-                    'width' => '34', // un puntito más para completar el 100%
+                    'width' => '25',
                 ),
                 'return_format' => 'array',
+            ),
+            array(
+                'key' => 'field_iconespecial',
+                'label' => 'Icono Especial 🖼️',
+                'name' => 'icono_especial',
+                'type' => 'image',
+                'instructions' => 'Seleccione o suba la imagen para el icono del link (32 por 32 píxeles)',
+                'required' => 0,
+                'wrapper' => array(
+                    'width' => '25',
+                ),
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
             ),
         ),
         'location' => array(
@@ -134,16 +414,9 @@ if (function_exists('acf_add_local_field_group')):
                 ),
             ),
         ),
-        'menu_order' => 0,
-        'position' => 'normal',
-        'style' => 'default',
-        'label_placement' => 'top',
-        'instruction_placement' => 'label',
-        'hide_on_screen' => '',
-        'active' => 1,
-        'description' => '',
     ));
 endif;
+
 
 if (function_exists('acf_add_local_field_group')):
     // Campos ACF de Sucursales y WhatsApp del header

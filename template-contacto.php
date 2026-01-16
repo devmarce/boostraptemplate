@@ -34,7 +34,7 @@ the_content();
 <?php include(get_template_directory() . "/template-parts/parts-homepage/homepage-cards-formas-pago.php"); ?>
 
 <!-- Formulario de contacto -->
-<section class="container my-5">
+<section id="form-contacto" class="container my-5">
   <h2 class="text-center mb-4 f-dulcing">Contactanos</h2>
   <?php
   $form_shortcode = get_field('form_shortcode');
@@ -59,7 +59,7 @@ the_content();
   </div>
   <hr>
 </section>
-<!-- test @borrar -->
+
 <style type="text/css">
 .hover-custom {
   transition: all 0.6s ease-in-out;

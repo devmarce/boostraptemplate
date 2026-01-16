@@ -145,7 +145,8 @@ if (!is_scalar($container_class) || empty($container_class)) {
                         <ul class="navbar-nav ml-lg-3">
                             <?php
                             // Obtener el link de sucursal de Configuración del sitio - header
-                            $link_especial = get_field('link_especial', 'option');
+                            $link_especial  = get_field('link_especial', 'option');
+                            $icono_especial = get_field('icono_especial', 'option');
 
                             if (!empty($link_especial) && !empty($link_especial['url'])) : ?>
                                 <li class="nav-item">
@@ -154,8 +155,9 @@ if (!is_scalar($container_class) || empty($container_class)) {
                                         <?php if (!empty($link_especial['target'])) : ?>
                                         target="<?php echo esc_attr($link_especial['target']); ?>"
                                         <?php endif; ?>>
-                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icons/icon-tag.png'); ?>" alt="ir a" style="width: 20%;">
-                                        <?php echo esc_html($link_especial['title'] ?: 'Sucursales'); ?>
+                                        <img src="<?php echo esc_url($icono_especial['url']); ?>" alt="ir a">
+
+                                        <?php echo esc_html($link_especial['title'] ?: ''); ?>
                                     </a>
                                 </li>
                             <?php endif; ?>
@@ -170,8 +172,7 @@ if (!is_scalar($container_class) || empty($container_class)) {
                                     <a class="nav-link"
                                         href="https://wa.me/<?php echo esc_attr($wa_number_header); ?>?text=<?php echo rawurlencode($wa_message_header); ?>"
                                         rel="noopener noreferrer" target="_blank">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icons/icon-whatsapp.png" alt="WhatsApp">
-                                        WhatsApp
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icons/wa.png" alt="WhatsApp">
                                     </a>
                                 </li>
                             <?php endif; ?>

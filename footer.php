@@ -44,8 +44,10 @@
 
     </div><!-- }container -->
 
+    <?php include(get_template_directory() . '/template-parts/content-redes.php'); ?>
+    
     <?php include(get_template_directory() . '/template-parts/parts-footer/footer-legales.php'); ?>
-
+    
     <?php include(get_template_directory() . '/template-parts/parts-footer/footer-create-by.php'); ?>
 
 </footer>

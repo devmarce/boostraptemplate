@@ -11,12 +11,12 @@
       <p><strong>Categoría:</strong> <?php echo esc_html($categoria); ?></p>
 
       <?php if ($precio_temporal > 0 && !empty($precio_temporal_hasta)): ?>
-        <p><strong>Precio:</strong> <del>$<?php echo number_format($precio_real, 2); ?></del></p>
+        <p><strong style="color: #ef00ff;">Precio: $<?php echo $precio_real; ?></strong></p>
         <p><strong>Precio oferta:</strong> <span class="precio-oferta">$<?php echo number_format($precio_temporal, 2); ?></span></p>
         <p><strong>Vigencia:</strong> hasta <?php echo date_i18n('d/m/Y', strtotime($precio_temporal_hasta)); ?></p>
         <div id="contador-<?php echo esc_attr($id); ?>" class="contador-oferta"></div>
       <?php else: ?>
-        <p><strong>Precio:</strong> $<?php echo number_format($precio, 2); ?></p>
+        <p><strong style="color: #ef00ff;">Precio: $<?php echo $precio_real; ?></strong></p>
       <?php endif; ?>
 
       <?php if ($descuento > 0): ?>

@@ -19,46 +19,50 @@ if (!is_scalar($container_class) || empty($container_class)) {
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- meta basic -->
-    <!-- Título SEO -->
-    <title>Dulcing | Pastelería artesanal casera en Buenos Aires</title>
+    <!-- SEO básico -->
+    <title>Dulcing Delicias | Tortas y pastelería artesanal en Buenos Aires</title>
 
-    <!-- Meta descripción -->
-    <meta name="description" content="Dulcing, pastelería artesanal casera de Ingrid Ruiz. Tortas, postres y dulces para fiestas, eventos y ventas por menor y mayor en Buenos Aires.">
+    <meta name="description" content="Dulcing Delicias: repostería artesanal gourmet by Ingrid Ruiz. Tortas, tartas y postres exclusivos para eventos y catering.">
+    <meta name="keywords" content="Dulcing, delicias, pasteleria, tartas, tortas, mesa dulce, catering, catering dulce, postres para eventos, repostería Ingrid Ruiz, Dulcing Delicias">
 
-    <!-- Palabras clave -->
-    <meta name="keywords" content="pastelería artesanal, tortas caseras, postres para fiestas, dulces por encargo, repostería Buenos Aires, Ingrid Ruiz, Dulcing, pastelería por mayor, pastelería por menor, promos de pastelería, presupuestos tortas">
-
-    <!-- Autor -->
     <meta name="author" content="Ingrid Ruiz - Dulcing.com.ar">
-
-    <!-- Robots -->
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dulcing.com.ar/" />
 
-    <!-- Open Graph básico -->
-    <meta property="og:title" content="Dulcing | Pastelería artesanal casera en Buenos Aires">
-    <meta property="og:description" content="Tortas y postres caseros elaborados por Ingrid Ruiz. Dulces para fiestas, catering, celebraciones y ventas por menor y mayor.">
-    <meta property="og:url" content="https://www.dulcing.com.ar">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Dulcing Delicias | Pastelería artesanal casera by Ingrid Ruiz, Buenos Aires">
+    <meta property="og:description" content="Dulcing Delicias: repostería artesanal gourmet by Ingrid Ruiz. Tortas, tartas y postres exclusivos para eventos y catering.">
+    <meta property="og:url" content="https://dulcing.com.ar/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="<?php 
         $og_image = get_field('og_image', 'option'); 
-        if ($og_image) {
-            echo esc_url($og_image['url']); 
-        } else {
-            echo get_template_directory_uri() . '/assets/img/marca/logo-dulcing.png';
-        }
+        echo $og_image ? esc_url($og_image['url']) : get_template_directory_uri() . '/assets/img/marca/logo-dulcing.png'; 
     ?>">
-
     <meta property="og:locale" content="es_AR">
 
+    <!-- Perfiles sociales -->
+     <meta property="og:see_also" content="https://www.facebook.com/profile.php?id=61586625263838">
+    <meta property="og:see_also" content="https://www.instagram.com/dulcing.delicias/">
 
-
-    <link rel="profile" href="http://gmpg.org/xfn/11" />
-    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <!-- Schema.org para negocio local -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Bakery",
+      "name": "Dulcing Delicias",
+      "image": "https://dulcing.com.ar/wp-content/themes/boostraptemplate/assets/img/marca/dulcing-by-ingrid.png",
+      "url": "https://dulcing.com.ar/",
+      "telephone": "+54 9 11 30273592",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "fournier 266",
+        "addressLocality": "Buenos Aires",
+        "addressCountry": "AR"
+      },
+      "priceRange": "$$",
+      "servesCuisine": "Pastelería artesanal"
+    }
+    </script>
 
     <!--WordPress head-->
     <?php wp_head(); ?>
@@ -72,7 +76,6 @@ if (!is_scalar($container_class) || empty($container_class)) {
     }
     ?>
 
-    <!-- test @borrar -->
     <style type="text/css">
         .page-header {
             margin-bottom: 0px !important;

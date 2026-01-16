@@ -14,13 +14,13 @@ $shortcode_feed_instagram = get_field('shortcode_feed_instagram', 'option');
 
   /* Título opcional */
   .instagram-section::before {
+    font-family: var(--font-dulcing);
     content: "<?php echo $data_title; ?>";
     display: block;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 2.5rem;
     margin-bottom: 20px;
     text-align: center;
-    color: #333;
+    color: #000;
   }
 
   /* Ajustes de las imágenes del feed */
@@ -55,6 +55,10 @@ $shortcode_feed_instagram = get_field('shortcode_feed_instagram', 'option');
   #sb_instagram {
     padding: 1.2rem !important;
     border-radius: 1.2rem;
+  }
+
+  .sbi_feedtheme_header_text h3, .sbi_feedtheme_header_text p {
+    font-family: var(--font-normal);
   }
 </style>
 

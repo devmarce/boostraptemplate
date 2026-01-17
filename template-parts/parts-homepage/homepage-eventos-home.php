@@ -2,6 +2,7 @@
 $titulo      = get_field('eventos_titulo', 'option');
 $texto       = get_field('eventos_texto', 'option');
 $mostrar_ventos = get_field('visible_eventos_home', 'option');
+$wa_numero  = get_field('whatsapp_delicias', 'options');
 ?>
 
 <?php if ($mostrar_ventos): ?>
@@ -15,10 +16,13 @@ $mostrar_ventos = get_field('visible_eventos_home', 'option');
         <p class="lead f-serius mb-5"><?php echo esc_html($texto); ?></p>
       <?php endif; ?>
 
-        <?php
-        $wa_numero  = get_field('whatsapp_delicias', 'options');
-        whatsapp_btn($wa_numero, '');
-        ?>
+
+          <?php echo cat_odin_ini('rgb(60, 60, 60)', ['Z','z','z','Dulcing...'], '#fff'); ?>
+
+            <?php whatsapp_btn($wa_numero, ''); ?>
+            
+          <?php echo cat_odin_end(); ?>
+
     </div>
   </div>
 <?php endif; ?>

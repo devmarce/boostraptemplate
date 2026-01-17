@@ -61,16 +61,15 @@ the_content();
 </section>
 
 <style type="text/css">
-.hover-custom {
-  transition: all 0.6s ease-in-out;
-  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
-}
+  .hover-custom {
+    transition: all 0.6s ease-in-out;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+  }
 
-.hover-custom:hover {
-  transform: scale(1.04) translateY(-6px);
-  box-shadow: 0 18px 35px rgb(251 3 255);
-}
-
+  .hover-custom:hover {
+    transform: scale(1.04) translateY(-6px);
+    box-shadow: 0 18px 35px rgb(251 3 255);
+  }
 </style>
 <!-- Sección encargos especiales -->
 <section class="container my-5">
@@ -101,7 +100,11 @@ the_content();
 
   <?php if ($wa_numero): ?>
     <h2 class="mb-4 f-dulcing"><?php echo esc_html($wa_titulo); ?></h2>
-    <?php whatsapp_btn($wa_numero, $wa_mensaje) ?>
+    <?php echo cat_odin_ini('rgb(60, 60, 60)', ['Z','z','z','Dulcing...'], '#000'); ?>
+    
+      <?php whatsapp_btn($wa_numero, $wa_mensaje) ?>
+
+    <?php echo cat_odin_end(); ?>
   <?php endif; ?>
 </section>
 

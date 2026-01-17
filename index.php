@@ -14,6 +14,7 @@
 get_header();
 ?>
 
+<?php //include(get_template_directory() . "/template-parts/test.php"); ?>
 <?php include(get_template_directory() . "/template-parts/parts-homepage/homepage-carrusel-productos.php"); ?>
 
 <?php include(get_template_directory() . "/template-parts/parts-homepage/homepage-eventos-home.php"); ?>

@@ -267,7 +267,7 @@ if (!is_scalar($container_class) || empty($container_class)) {
                     </a>
 
                     <!-- Botón responsive ▤ -->
-                    <?php echo cat_odin_ini('rgb(0, 0, 0)', ['💤','','',''], 'rgb(106 40 164)'); ?>
+                    <?php echo cat_odin_ini('rgb(0, 0, 0)', ['💤','','',''], 'rgb(106 40 164)', responsive_device('mobile')); ?>
                     <button class="navbar-toggler odin-bed" type="button" data-toggle="collapse" data-target="#mainNavbar"
                         aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>

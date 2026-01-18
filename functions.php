@@ -323,7 +323,7 @@ function whatsapp_btn($tel, $mensaje, $tit_btn = "Enviar Mensaje")
 
 
 
-function cat_odin_ini ($color = '#000000', $array = ['Z', 'z', 'z'], $color_txt = '#000000')
+function cat_odin_ini ($color = '#000000', $array = ['Z', 'z', 'z'], $color_txt = '#000000', $device = '')
 {
     // echo cat_odin_ini('#FF0000', ['😴', '💤', '🛌'], '#0000FF');
     //      html o boton -> add class "odin-bed"
@@ -341,7 +341,8 @@ function cat_odin_ini ($color = '#000000', $array = ['Z', 'z', 'z'], $color_txt 
     }
 
     return <<<HTML
-      <div class="mouse-detector"><div class="odin">
+      <div class="mouse-detector {$device}">
+        <div class="odin">
       <!-- sueño -->
       <div class="sleep-symbol">
         $spans
@@ -399,7 +400,7 @@ function cat_odin_ini ($color = '#000000', $array = ['Z', 'z', 'z'], $color_txt 
           </g>
         </svg>
       </div>
-HTML;
+    HTML;
 }
 
 function cat_odin_end () {

@@ -100,7 +100,7 @@ the_content();
 
   <?php if ($wa_numero): ?>
     <h2 class="mb-4 f-dulcing"><?php echo esc_html($wa_titulo); ?></h2>
-    <?php echo cat_odin_ini('rgb(60, 60, 60)', ['Z','z','z','Dulcing...'], '#000'); ?>
+    <?php echo cat_odin_ini('rgb(60, 60, 60)', ['Z','z','z','Dulcing...'], '#000',''); ?>
     
       <?php whatsapp_btn($wa_numero, $wa_mensaje) ?>
 

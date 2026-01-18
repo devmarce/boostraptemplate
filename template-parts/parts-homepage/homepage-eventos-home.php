@@ -17,7 +17,7 @@ $wa_numero  = get_field('whatsapp_delicias', 'options');
       <?php endif; ?>
 
 
-          <?php echo cat_odin_ini('rgb(60, 60, 60)', ['Z','z','z','Dulcing...'], '#fff'); ?>
+          <?php echo cat_odin_ini('rgb(60, 60, 60)', ['Z','z','z','Dulcing...'], '#fff',''); ?>
 
             <?php whatsapp_btn($wa_numero, ''); ?>
             
